@@ -12,7 +12,7 @@ getgenv([[
 ]])
 
 getgenv().JXMysticFarmerConfig = {
-    AutoServerTripleDamage = true,
+    AutoServerTripleDamage = false,
     MineMode = "Multi", -- Multi or All
     Areas = {
         ["Mystic Mine"] = {
@@ -29,7 +29,7 @@ getgenv().JXMysticFarmerConfig = {
     },
     Webhook = {
         EnabledGemWebhook = true,
-        EnableFruitWebhook = true,
+        EnableFruitWebhook = false,
         GemUrl = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
         FruitUrl = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
         ShowUsername = true,
