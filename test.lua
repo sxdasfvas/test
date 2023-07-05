@@ -20,7 +20,7 @@ getgenv().JXMysticFarmerConfig = {
             GiantChest = true,
         },
         ["Cyber Cavern"] = {
-            Diamonds = true,
+            Diamonds = false,
             GiantChest = true,
         },
         ["Paradise Cave"] = {
