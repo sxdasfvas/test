@@ -48,13 +48,13 @@ getgenv().JXMysticFarmerConfig = {
             "Banana"
         },
         Worlds = {
-            --"Spawn",
-            --"Fantasy",
-            --"Tech",
-            --"Axolotl Ocean",
-            --"Pixel",
-            --"Cat",
-            --"Doodle",
+            "Spawn",
+            "Fantasy",
+            "Tech",
+            "Axolotl Ocean",
+            "Pixel",
+            "Cat",
+            "Doodle",
             --"Kawaii",
             --"Dog",
         }
