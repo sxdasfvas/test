@@ -36,6 +36,29 @@ getgenv().JXMysticFarmerConfig = {
         ShowFruits = true,
         Delay = 300, -- seconds
     },
+    Fruits = {
+        Max = 200,
+        StartFarmAt = 100,
+        FruitsToFarm = {
+            "Apple",
+            "Orange",
+            "Pineapple",
+            "Pear", -- Golden apple thing
+            "Rainbow Fruit",
+            "Banana"
+        },
+        Worlds = {
+            --"Spawn",
+            --"Fantasy",
+            --"Tech",
+            --"Axolotl Ocean",
+            --"Pixel",
+            --"Cat",
+            --"Doodle",
+            --"Kawaii",
+            --"Dog",
+        }
+    },
     Preformace = {
         FPS = 60,
     }
