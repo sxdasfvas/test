@@ -22,7 +22,7 @@ getgenv().Settings = {
 
 -- dont touch below pls
 
-local MYSTIC_CFRAME_SAFE = CFrame.new(9038, -33, 2458)
+local MYSTIC_CFRAME_SAFE = CFrame.new(9031, -33, 2439)
 local VAULT_CFRAME_SAFE = CFrame.new(3588, -35, 2457)
 
 local PERF = Settings["Performance"]
