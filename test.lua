@@ -1,10 +1,10 @@
 repeat task.wait() until game:IsLoaded()
-task.wait()
+task.wait(30)
 
 getgenv().Settings = {
     ["Farm Speed"] = 0.30,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = -1,
+    ["Minimum Oranges"] = 170,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
