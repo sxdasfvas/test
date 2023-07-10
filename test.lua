@@ -183,8 +183,6 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
-task.wait(20)
-
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
 
@@ -249,7 +247,7 @@ function farmFruits()
     end
 end
 
-task.wait(30)
+task.wait(20)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
