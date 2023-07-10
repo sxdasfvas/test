@@ -22,7 +22,7 @@ getgenv().Settings = {
 
 -- dont touch below pls
 
-local MYSTIC_CFRAME_SAFE = CFrame.new(9031, -35, 2439)
+local MYSTIC_CFRAME_SAFE = CFrame.new(9038, -33, 2458)
 local VAULT_CFRAME_SAFE = CFrame.new(3588, -35, 2457)
 
 local PERF = Settings["Performance"]
@@ -182,6 +182,8 @@ function farmCoin(coinId, petUIDs)
         Network.Fire("Farm Coin", coinId, pet)
     end
 end
+
+task.wait(60)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
