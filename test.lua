@@ -249,7 +249,6 @@ function farmFruits()
     end
 end
 
-task.wait(60)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
@@ -265,6 +264,8 @@ function farmMystic()
         return coins
     end
 
+task.wait(60)
+	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
     end
