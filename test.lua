@@ -247,7 +247,7 @@ function farmFruits()
     end
 end
 
-task.wait(20)
+task.wait(60)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
