@@ -1,5 +1,5 @@
 repeat task.wait() until game:IsLoaded()
-task.wait(120)
+task.wait()
 
 getgenv().Settings = {
     ["Farm Speed"] = 0.30,
@@ -183,6 +183,8 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
+task.wait(20)
+
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
 
@@ -246,6 +248,8 @@ function farmFruits()
         end)
     end
 end
+
+task.wait(30)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
