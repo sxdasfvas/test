@@ -1,5 +1,5 @@
 repeat task.wait() until game:IsLoaded()
-task.wait()
+task.wait(120)
 
 getgenv().Settings = {
     ["Farm Speed"] = 0.30,
