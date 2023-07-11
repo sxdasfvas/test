@@ -157,11 +157,6 @@ Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 Humanoid = Character:WaitForChild("Humanoid")
 HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 
--- Anti AFK
-for _,v in pairs(getconnections(LocalPlayer.Idled)) do
-    v:Disable()
-end
-
 -- thanks rafa
 local bypassSuccess, bypassError
 bypassSuccess, bypassError = pcall(function()
