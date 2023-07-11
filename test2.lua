@@ -116,11 +116,6 @@ local HttpService = game:GetService("HttpService")
 local InputService = game:GetService('UserInputService')
 local RunService = game:GetService('RunService')
 
--- Anti AFK
-for _,v in pairs(getconnections(LocalPlayer.Idled)) do
-    v:Disable()
-end
-
 
 local banSuccess, banError = pcall(function() 
     local Blunder = require(game:GetService("ReplicatedStorage"):WaitForChild("X", 10):WaitForChild("Blunder", 10):WaitForChild("BlunderList", 10))
@@ -161,6 +156,11 @@ Library2 = nil
 Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 Humanoid = Character:WaitForChild("Humanoid")
 HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+-- Anti AFK
+for _,v in pairs(getconnections(LocalPlayer.Idled)) do
+    v:Disable()
+end
 
 -- thanks rafa
 local bypassSuccess, bypassError
