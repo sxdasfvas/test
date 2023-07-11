@@ -183,7 +183,7 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
-task.wait(60)
+task.wait(10)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
