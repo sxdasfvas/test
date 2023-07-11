@@ -64,4 +64,4 @@ getgenv().JXMysticFarmerConfig = {
     }
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/sxdasfvas/test/main/555.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/jedpep/PSX/main/JXMysticFarmer.lua"))()
