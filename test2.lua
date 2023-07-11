@@ -2,11 +2,6 @@
 -- discord.gg/BNxJpgymkE
 repeat wait() until game:IsLoaded()
 
--- Anti AFK
-for _,v in pairs(getconnections(LocalPlayer.Idled)) do
-    v:Disable()
-end
-
 if not LPH_OBFUSCATED then
     LPH_JIT_MAX = function(...) return(...) end;
     LPH_NO_VIRTUALIZE = function(...) return(...) end;
