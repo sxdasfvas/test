@@ -264,7 +264,7 @@ function farmMystic()
         return coins
     end
 
-task.wait(60)
+task.wait(10)
 	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
