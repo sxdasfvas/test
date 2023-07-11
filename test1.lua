@@ -30,8 +30,8 @@ getgenv().JXMysticFarmerConfig = {
     Webhook = {
         EnabledGemWebhook = true,
         EnableFruitWebhook = true,
-        GemUrl = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
-        FruitUrl = "https://discord.com/api/webhooks/1116896146376376391/nxCUIoP8hJUft1K44Rdv1raf1-Y92apQRC0KVzKXK1WVz6r4RHiz22ZJhtPzNIRoWSpk",
+        GemUrl = "",
+        FruitUrl = "",
         ShowUsername = true,
         ShowFruits = true,
         Delay = 300, -- seconds
@@ -60,8 +60,8 @@ getgenv().JXMysticFarmerConfig = {
         }
     },
     Preformace = {
-        FPS = 30
+        FPS = 60,
     }
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/sxdasfvas/test/main/test2.lua))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/jedpep/PSX/main/JXMysticFarmer.lua"))()
