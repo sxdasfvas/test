@@ -138,21 +138,6 @@ function create_platform(x, y, z)
 	p.Parent = game.Workspace
 end
 
-function serverHop()
-    repeat
-        local data = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/6284583030/servers/Public?sortOrder=Dsc&excludeFullGames=true&limit=100"))
-        local bestserver
-        for i,v in pairs(data.data) do
-           if v.playing == 11 then
-            bestserver = v.id
-          end
-        end
-        
-        game:GetService("TeleportService"):TeleportToPlaceInstance(6284583030, bestserver, game.Players.LocalPlayer)
-        task.wait(2)
-    until oldJob ~= game.JobId
-end
-
 local function formatNumber(number)
     return tostring(number):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
 end
@@ -464,5 +449,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(9999)
+    wait(600)
 end
