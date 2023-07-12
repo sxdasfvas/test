@@ -5,10 +5,10 @@ local Settings = {
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
-        ["Server Boost"] = true
+        ["Server Boost"] = false
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Your Username", -- Account To Send Gems
+        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
         ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
         ["Enabled"] = false
     },
@@ -19,12 +19,14 @@ local Settings = {
 }
 -- Wait until game loads
 repeat
-    task.wait(180)
+    task.wait(150)
 until game.PlaceId ~= nil
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
+settings().Rendering.QualityLevel = 1
+game:GetService"RunService":Set3dRenderingEnabled(false)
 
 -- VARIABLES/LOCALS
 local platform = nil
@@ -136,21 +138,6 @@ function create_platform(x, y, z)
 	p.Position = Vector3.new(x, y, z)
 	p.Size = Vector3.new(100, 1, 100)
 	p.Parent = game.Workspace
-end
-
-function serverHop()
-    repeat
-        local data = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/6284583030/servers/Public?sortOrder=Dsc&excludeFullGames=true&limit=100"))
-        local bestserver
-        for i,v in pairs(data.data) do
-           if v.playing == 11 then
-            bestserver = v.id
-          end
-        end
-        
-        game:GetService("TeleportService"):TeleportToPlaceInstance(6284583030, bestserver, game.Players.LocalPlayer)
-        task.wait(2)
-    until oldJob ~= game.JobId
 end
 
 local function formatNumber(number)
@@ -388,54 +375,6 @@ wait(0.5)
 local farm = coroutine.create(function()
     while 1 do
         wait(0.1)
-        Teleport(9043.19, -30, 2424.63)
-        --get coins in mystic mine
-        AllC = Invoke("Get Coins")
-        AllNeededCoinsChest = {}
-        for i, v in pairs(AllC) do
-            if v.a == "Mystic Mine" then
-                if string.find(v.n, "Giant Chest") then
-                    AllNeededCoinsChest[i] = v
-                    print(tostring(v.n))
-                end
-            end
-        end
-
-        --break Chest in mystic mine
-        for i, v in pairs(AllNeededCoinsChest) do
-            local v86 = Invoke("Join Coin", i, newP)
-            for v88, v89 in pairs(v86) do
-                Fire("Farm Coin", i, v88);
-                wait_until_broken(i)
-            end
-            while 1 do
-                wait(0.04)
-                AllC = Invoke("Get Coins")
-                f = false
-                for i2,v2 in pairs(AllC) do
-                    if i2 == i then f = true end
-                end
-                if not f then break end
-            end
-        end
-
-        --break coins in mystic mine
-        AllC = Invoke("Get Coins")
-        AllNeededCoins = {}
-        for i, v in pairs(AllC) do
-            if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
-                AllNeededCoins[i] = v
-                print(tostring(v.n))
-            end
-        end
-
-        for i, v in pairs(AllNeededCoins) do
-            attack_coin(i, newP)
-            task.wait(0.04)
-            wait_until_broken(i)
-        end
-
-        wait(0.1)
         Teleport(8658.12, -30, 3020.79)
 
         Fire("Performed Teleport")
@@ -464,5 +403,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(9999)
+    wait(99999)
 end
