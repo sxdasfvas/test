@@ -60,9 +60,6 @@ coroutine.resume(timer)
 getgenv().Settings = Settings
 
 -- Anti AFK
-for _,v in pairs(getconnections(LocalPlayer.Idled)) do
-    v:Disable()
-end
 
 --disable orbs render
 game:GetService("Workspace")["__THINGS"].Orbs.ChildAdded:Connect(function(v)
