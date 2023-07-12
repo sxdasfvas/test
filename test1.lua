@@ -5,10 +5,10 @@ local Settings = {
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
-        ["Server Boost"] = false
+        ["Server Boost"] = true
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
+        ["Recipient"] = "Your Username", -- Account To Send Gems
         ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
         ["Enabled"] = false
     },
@@ -19,7 +19,7 @@ local Settings = {
 }
 -- Wait until game loads
 repeat
-    task.wait(180)
+    task.wait()
 until game.PlaceId ~= nil
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -56,7 +56,9 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Anti AFK
+-- Rest of the code...
+
+
 
 --disable orbs render
 game:GetService("Workspace")["__THINGS"].Orbs.ChildAdded:Connect(function(v)
@@ -132,6 +134,21 @@ function create_platform(x, y, z)
 	p.Position = Vector3.new(x, y, z)
 	p.Size = Vector3.new(100, 1, 100)
 	p.Parent = game.Workspace
+end
+
+function serverHop()
+    repeat
+        local data = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/6284583030/servers/Public?sortOrder=Dsc&excludeFullGames=true&limit=100"))
+        local bestserver
+        for i,v in pairs(data.data) do
+           if v.playing == 11 then
+            bestserver = v.id
+          end
+        end
+        
+        game:GetService("TeleportService"):TeleportToPlaceInstance(6284583030, bestserver, game.Players.LocalPlayer)
+        task.wait(2)
+    until oldJob ~= game.JobId
 end
 
 local function formatNumber(number)
@@ -445,5 +462,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(99999)
+    wait(9999)
 end
