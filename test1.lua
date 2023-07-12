@@ -449,5 +449,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(600)
+    wait(99999)
 end
