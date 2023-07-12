@@ -56,8 +56,10 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Rest of the code...
-
+-- Anti AFK
+for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+v:Disable()
+end
 
 
 --disable orbs render
