@@ -1,14 +1,14 @@
 -- CONFIGURATIONS --
 local Settings = {
     ["Webhooks"] = {
-        ["Webhook"] = "https://discord.com/api/webhooks/1117422861519441933/2UhtSzXf9xJbLW7EpFsdA0p8RQT2WmlPnG5E0XiIIh-JMlK2qB-e3q9HRaw3gRh43lvX",
+        ["Webhook"] = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
         ["Server Boost"] = false
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Your Username", -- Account To Send Gems
+        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
         ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
         ["Enabled"] = false
     },
@@ -58,8 +58,10 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Rest of the code...
-
+-- Anti AFK
+for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+v:Disable()
+end
 
 
 --disable orbs render
