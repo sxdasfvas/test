@@ -8,13 +8,13 @@ local Settings = {
         ["Server Boost"] = false
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Your Username", -- Account To Send Gems
-        ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
-        ["Enabled"] = false
+        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
+        ["Minimum Diamonds"] = 50000000000, -- Minimum Gems To Send
+        ["Enabled"] = true
     },
     ["Fruits"] = {
         ["MinimumFruits"] = 100,
-        ["MaximumFruits"] = 150 
+        ["MaximumFruits"] = 200 
     },
 }
 -- Wait until game loads
@@ -59,7 +59,10 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Rest of the code...
+-- Anti AFK
+for _,v in pairs(getconnections(LocalPlayer.Idled)) do
+    v:Disable()
+end
 
 
 
