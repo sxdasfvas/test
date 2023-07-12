@@ -1,7 +1,7 @@
 -- CONFIGURATIONS --
 local Settings = {
     ["Webhooks"] = {
-        ["Webhook"] = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
+        ["Webhook"] = "",
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
@@ -18,6 +18,7 @@ local Settings = {
     },
 }
 -- Wait until game loads
+
 repeat
     task.wait()
 until game.PlaceId ~= nil
@@ -25,6 +26,8 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
+settings().Rendering.QualityLevel = 1
+game:GetService"RunService":Set3dRenderingEnabled(false)
 
 -- VARIABLES/LOCALS
 local platform = nil
@@ -462,5 +465,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(600)
+    wait(99999)
 end
