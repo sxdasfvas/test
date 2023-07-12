@@ -375,24 +375,23 @@ wait(0.5)
 local farm = coroutine.create(function()
     while 1 do
         wait(0.1)
-        Teleport(8658.12, -30, 3020.79)
-
-        Fire("Performed Teleport")
-        wait(0.5)
+        Teleport(9043.19, -30, 2424.63)
+        --get coins in mystic mine
         AllC = Invoke("Get Coins")
-        AllNeededCoinsCyber = {} --only destroy chest in Cyber Cavern
+        AllNeededCoinsChest = {}
         for i, v in pairs(AllC) do
-            if v.a == "Cyber Cavern" then
-                AllNeededCoinsCyber[i] = v
-                print(tostring(v.n))
+            if v.a == "Mystic Mine" then
+                if string.find(v.n, "Giant Chest") then
+                    AllNeededCoinsChest[i] = v
+                    print(tostring(v.n))
+                end
             end
-        end
-        --break coins in cyber cavern
-        for i, v in pairs(AllNeededCoinsCyber) do
-            attack_coin(i, newP)
-            task.wait(0.04)
-            wait_until_broken(i)
-        end
+	--break Chest in mystic mine
+        for i, v in pairs(AllNeededCoinsChest) do
+            local v86 = Invoke("Join Coin", i, newP)
+            for v88, v89 in pairs(v86) do
+                Fire("Farm Coin", i, v88);
+                wait_until_broken(i)
     end
 end)
 coroutine.resume(farm)
