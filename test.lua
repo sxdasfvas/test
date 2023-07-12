@@ -25,8 +25,6 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
-settings().Rendering.QualityLevel = 1
-game:GetService"RunService":Set3dRenderingEnabled(false)
 
 -- VARIABLES/LOCALS
 local platform = nil
