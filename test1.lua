@@ -1,7 +1,7 @@
 -- CONFIGURATIONS --
 local Settings = {
     ["Webhooks"] = {
-        ["Webhook"] = "https://discord.com/api/webhooks/1117422861519441933/2UhtSzXf9xJbLW7EpFsdA0p8RQT2WmlPnG5E0XiIIh-JMlK2qB-e3q9HRaw3gRh43lvX",
+        ["Webhook"] = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6",
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
@@ -464,5 +464,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(600)
+    wait(9999)
 end
