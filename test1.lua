@@ -1,24 +1,23 @@
 -- CONFIGURATIONS --
 local Settings = {
     ["Webhooks"] = {
-        ["Webhook"] = "",
+        ["Webhook"] = "https://discord.com/api/webhooks/1117422861519441933/2UhtSzXf9xJbLW7EpFsdA0p8RQT2WmlPnG5E0XiIIh-JMlK2qB-e3q9HRaw3gRh43lvX",
     },
     ["Boosts"] = {
         ["Self Boost"] = true,
         ["Server Boost"] = false
     },
     ["Mailbox"] = {
-        ["Recipient"] = "Pr4m0t", -- Account To Send Gems
-        ["Minimum Diamonds"] = 50000000000, -- Minimum Gems To Send
-        ["Enabled"] = true
+        ["Recipient"] = "Your Username", -- Account To Send Gems
+        ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
+        ["Enabled"] = false
     },
     ["Fruits"] = {
         ["MinimumFruits"] = 100,
-        ["MaximumFruits"] = 200 
+        ["MaximumFruits"] = 150 
     },
 }
 -- Wait until game loads
-
 repeat
     task.wait()
 until game.PlaceId ~= nil
@@ -59,7 +58,9 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Anti AFK
+-- Rest of the code...
+
+
 
 --disable orbs render
 game:GetService("Workspace")["__THINGS"].Orbs.ChildAdded:Connect(function(v)
@@ -463,5 +464,5 @@ while 1 do
     local EndingGems = Library.Save.Get().Diamonds
     GemsEarned = EndingGems - StartingGems
     pcall(sendUpdate)
-    wait(99999)
+    wait(600)
 end
