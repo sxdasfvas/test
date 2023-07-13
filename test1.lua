@@ -19,7 +19,7 @@ local Settings = {
 }
 -- Wait until game loads
 repeat
-    task.wait()
+    task.wait(180)
 until game.PlaceId ~= nil
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -359,6 +359,8 @@ else
 end
 
 create_platform(9043.19, -32, 2424.63)
+wait(0.1)
+create_platform(8658.12, -32, 3020.79)
 
 --start
 --get pets
@@ -374,20 +376,66 @@ local farm = coroutine.create(function()
     while 1 do
         wait(0.1)
         Teleport(9043.19, -30, 2424.63)
+        --get coins in mystic mine
+        AllC = Invoke("Get Coins")
+        AllNeededCoinsChest = {}
+        for i, v in pairs(AllC) do
+            if v.a == "Mystic Mine" then
+                if string.find(v.n, "Giant Chest") then
+                    AllNeededCoinsChest[i] = v
+                    print(tostring(v.n))
+                end
+            end
+        end
+
+        --break Chest in mystic mine
+        for i, v in pairs(AllNeededCoinsChest) do
+            local v86 = Invoke("Join Coin", i, newP)
+            for v88, v89 in pairs(v86) do
+                Fire("Farm Coin", i, v88);
+                wait_until_broken(i)
+            end
+            while 1 do
+                wait(0.04)
+                AllC = Invoke("Get Coins")
+                f = false
+                for i2,v2 in pairs(AllC) do
+                    if i2 == i then f = true end
+                end
+                if not f then break end
+            end
+        end
+
+        --break coins in mystic mine
+        AllC = Invoke("Get Coins")
+        AllNeededCoins = {}
+        for i, v in pairs(AllC) do
+            if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
+                AllNeededCoins[i] = v
+                print(tostring(v.n))
+            end
+        end
+
+        for i, v in pairs(AllNeededCoins) do
+            attack_coin(i, newP)
+            task.wait(0.04)
+            wait_until_broken(i)
+        end
+
+        wait(0.1)
+        Teleport(8658.12, -30, 3020.79)
 
         Fire("Performed Teleport")
         wait(0.5)
         AllC = Invoke("Get Coins")
-        AllNeededCoinsCyber = {} --only destroy chest in mystic mine
+        AllNeededCoinsCyber = {} --only destroy chest in Cyber Cavern
         for i, v in pairs(AllC) do
-            if v.a == "Mystic Mine" then
-		if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
+            if v.a == "Cyber Cavern" then
                 AllNeededCoinsCyber[i] = v
                 print(tostring(v.n))
-                end
             end
         end
-        --break coins in mystic mine
+        --break coins in cyber cavern
         for i, v in pairs(AllNeededCoinsCyber) do
             attack_coin(i, newP)
             task.wait(0.04)
