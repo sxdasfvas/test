@@ -2,7 +2,7 @@ repeat task.wait() until game:IsLoaded()
 task.wait()
 
 getgenv().Settings = {
-    ["Farm Speed"] = 0.20,
+    ["Farm Speed"] = 0.01,
     ["Pet Sending"] = "Single", -- All or Single
     ["Minimum Oranges"] = 170,
     ["Maximum Oranges"] = 200,
@@ -14,7 +14,7 @@ getgenv().Settings = {
         ["Amount"] = 50000000000,
     },
     ["Performance"] = {
-        ["FPS Cap"] = 10,
+        ["FPS Cap"] = 20,
         ["Disable Rendering"] = true,
         ["Downgraded Quality"] = true
     }
