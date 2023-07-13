@@ -14,7 +14,7 @@ getgenv().Settings = {
         ["Amount"] = 50000000000,
     },
     ["Performance"] = {
-        ["FPS Cap"] = 30,
+        ["FPS Cap"] = 60,
         ["Disable Rendering"] = true,
         ["Downgraded Quality"] = true
     }
