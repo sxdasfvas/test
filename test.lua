@@ -19,14 +19,12 @@ local Settings = {
 }
 -- Wait until game loads
 repeat
-    task.wait(150)
+    task.wait()
 until game.PlaceId ~= nil
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
-settings().Rendering.QualityLevel = 1
-game:GetService"RunService":Set3dRenderingEnabled(false)
 
 -- VARIABLES/LOCALS
 local platform = nil
@@ -359,8 +357,6 @@ else
 end
 
 create_platform(9043.19, -32, 2424.63)
-wait(0.1)
-create_platform(8658.12, -32, 3020.79)
 
 --start
 --get pets
@@ -376,22 +372,23 @@ local farm = coroutine.create(function()
     while 1 do
         wait(0.1)
         Teleport(9043.19, -30, 2424.63)
-        --get coins in mystic mine
+
+        Fire("Performed Teleport")
+        wait(0.5)
         AllC = Invoke("Get Coins")
-        AllNeededCoinsChest = {}
+        AllNeededCoinsCyber = {} --only destroy chest in mystic mine
         for i, v in pairs(AllC) do
             if v.a == "Mystic Mine" then
-                if string.find(v.n, "Giant Chest") then
-                    AllNeededCoinsChest[i] = v
-                    print(tostring(v.n))
-                end
+                AllNeededCoinsCyber[i] = v
+                print(tostring(v.n))
             end
-	--break Chest in mystic mine
-        for i, v in pairs(AllNeededCoinsChest) do
-            local v86 = Invoke("Join Coin", i, newP)
-            for v88, v89 in pairs(v86) do
-                Fire("Farm Coin", i, v88);
-                wait_until_broken(i)
+        end
+        --break coins in mystic mine
+        for i, v in pairs(AllNeededCoinsCyber) do
+            attack_coin(i, newP)
+            task.wait(0.04)
+            wait_until_broken(i)
+        end
     end
 end)
 coroutine.resume(farm)
