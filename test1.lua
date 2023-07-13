@@ -19,7 +19,7 @@ local Settings = {
 }
 -- Wait until game loads
 repeat
-    task.wait(180)
+    task.wait()
 until game.PlaceId ~= nil
 if not game:IsLoaded() then
     game.Loaded:Wait()
