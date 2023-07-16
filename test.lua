@@ -4,7 +4,7 @@ task.wait()
 getgenv().Settings = {
     ["Farm Speed"] = 0.30,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 170,
+    ["Minimum Oranges"] = 150,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
