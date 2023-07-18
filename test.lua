@@ -183,7 +183,7 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
-task.wait(60)
+task.wait(30)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
@@ -264,7 +264,7 @@ function farmMystic()
         return coins
     end
 
-task.wait(60)
+task.wait(30)
 	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
