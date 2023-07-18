@@ -11,7 +11,7 @@ getgenv().Settings = {
         ["Auto Send"] = true,
         ["Delay"] = 30,
         ["Recipient"] = "Pr4m0t",
-        ["Amount"] = 50000000000,
+        ["Amount"] = 49000000000,
     },
     ["Performance"] = {
         ["FPS Cap"] = 60,
@@ -183,7 +183,7 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
-task.wait(10)
+task.wait(30)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
@@ -264,7 +264,7 @@ function farmMystic()
         return coins
     end
 
-task.wait(10)
+task.wait(30)
 	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
