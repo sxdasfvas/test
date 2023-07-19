@@ -136,25 +136,6 @@ function create_platform(x, y, z)
 	p.Parent = game.Workspace
 end
 
-function serverHop()
-    repeat
-        local data = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/6284583030/servers/Public?sortOrder=Dsc&excludeFullGames=true&limit=100"))
-        local bestserver
-        for i,v in pairs(data.data) do
-           if v.playing == 11 then
-            bestserver = v.id
-          end
-        end
-        
-        game:GetService("TeleportService"):TeleportToPlaceInstance(6284583030, bestserver, game.Players.LocalPlayer)
-        task.wait(2)
-    until oldJob ~= game.JobId
-end
-
-local function formatNumber(number)
-    return tostring(number):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
-end
-
 function add_suffix(inte)
     local gems = inte
     local gems_formatted
@@ -365,7 +346,6 @@ else
         wait(1)
     end
     if not success then
-        pcall(serverHop)
     end
 end
 
@@ -392,7 +372,7 @@ local farm = coroutine.create(function()
         AllNeededCoinsChest = {}
         for i, v in pairs(AllC) do
             if v.a == "Mystic Mine" then
-                if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
+                if string.find(v.n, "Giant Chest") then
                     AllNeededCoinsChest[i] = v
                     print(tostring(v.n))
                 end
