@@ -1,382 +1,467 @@
-repeat task.wait() until game:IsLoaded()
-task.wait(10)
-
-getgenv().Settings = {
-    ["Farm Speed"] = 0.30,
-    ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 170,
-    ["Maximum Oranges"] = 200,
-    ["Mailbox"] = {
-        ["Auto Claim"] = false,
-        ["Auto Send"] = true,
-        ["Delay"] = 30,
-        ["Recipient"] = "Pr4m0t",
-        ["Amount"] = 49000000000,
+-- CONFIGURATIONS --
+local Settings = {
+    ["Webhooks"] = {
+        ["Webhook"] = "https://discord.com/api/webhooks/1131329457131618365/OKAkNstEsUsyCUQnBTfQMWvSNmTedml9DU5z9ahcA3-6S-9S6L4-s61amy8WQ-b_ZazZ",
     },
-    ["Performance"] = {
-        ["FPS Cap"] = 60,
-        ["Disable Rendering"] = true,
-        ["Downgraded Quality"] = true
-    }
+    ["Boosts"] = {
+        ["Self Boost"] = true,
+        ["Server Boost"] = false
+    },
+    ["Mailbox"] = {
+        ["Recipient"] = "Your Username", -- Account To Send Gems
+        ["Minimum Diamonds"] = 534534535345435, -- Minimum Gems To Send
+        ["Enabled"] = false
+    },
+    ["Fruits"] = {
+        ["MinimumFruits"] = 100,
+        ["MaximumFruits"] = 150 
+    },
 }
-
--- dont touch below pls
-
-local MYSTIC_CFRAME_SAFE = CFrame.new(9038, -33, 2458)
-local VAULT_CFRAME_SAFE = CFrame.new(3588, -35, 2457)
-
-local PERF = Settings["Performance"]
-local MB = Settings["Mailbox"]
-local mailing = false
-
-if not game:IsLoaded() then game.Loaded:Wait() end
-local Lib = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"))
-repeat task.wait() until Lib.Loaded
-
--- // Services //
-local RS = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- // PSX Libraries //
-local Library = RS:WaitForChild("Library")
-local ClientModule = Library:WaitForChild("Client")
-local Directory = require(Library:WaitForChild("Directory"))
-
-local Network = require(ClientModule:WaitForChild("Network"))
-local Save = require(ClientModule:WaitForChild("Save"))
-local WorldCmds = require(ClientModule:WaitForChild("WorldCmds"))
-local PetCmds = require(ClientModule:WaitForChild("PetCmds"))
-local ServerBoosts = require(ClientModule:WaitForChild("ServerBoosts"))
-
--- Anti AFK
-for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
-v:Disable()
+-- Wait until game loads
+repeat
+    task.wait()
+until game.PlaceId ~= nil
+if not game:IsLoaded() then
+    game.Loaded:Wait()
 end
+repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
 
-do -- Patching/Hooking
-    if (not getgenv().hooked) then
-        hookfunction(debug.getupvalue(Network.Fire, 1) , function(...) return true end)
-        hookfunction(debug.getupvalue(Network.Invoke, 1) , function(...) return true end)
-        getgenv().hooked = true
+-- VARIABLES/LOCALS
+local platform = nil
+local teleportingEnabled = true
+local oldJob = game.JobId
+local v1 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
+while not v1.Loaded do
+    game:GetService("RunService").Heartbeat:Wait();
+end;
+local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
+local Fire, Invoke = Network.Fire, Network.Invoke
+local old
+old = hookfunction(getupvalue(Fire, 1), function(...)
+    return true
+end)
+local TimeElapsed = 0
+local GemsEarned = 0
+local TotalGemsEarned = 0
+local Library = require(game:GetService("ReplicatedStorage").Library)
+local StartingGems = Library.Save.Get().Diamonds
+local timer = coroutine.create(function()
+    while 1 do
+        TimeElapsed = TimeElapsed + 1
+        wait(1)
     end
+end)
+coroutine.resume(timer)
 
-    local Blunder = require(RS:FindFirstChild("BlunderList", true))
-    local OldGet = Blunder.getAndClear
+-- Settings
+getgenv().Settings = Settings
 
-    setreadonly(Blunder, false)
+-- Rest of the code...
 
-    Blunder.getAndClear = function(...)
-        local Packet = ...
-        for i,v in next, Packet.list do
-            if v.message ~= "PING" then
-                table.remove(Packet.list, i)
-            end
-        end
-        return OldGet(Packet)
-    end
 
-    local Audio = require(RS:WaitForChild("Library"):WaitForChild("Audio"))
-    hookfunction(Audio.Play, function(...)
-        return {
-            Play = function() end,
-            Stop = function() end,
-            IsPlaying = function() return false end
-        }
-    end)
 
-    print("Hooked")
-end
+--disable orbs render
+game:GetService("Workspace")["__THINGS"].Orbs.ChildAdded:Connect(function(v)
+	pcall(function()
+		v.Orb.Enabled = false
+	end)
+end)
 
-do -- Performance
-    setfpscap(PERF["FPS Cap"] or 15)
-    game:GetService("RunService"):Set3dRenderingEnabled(not PERF["Disable Rendering"])
-    if PERF["Downgraded Quality"] then
-        local lighting = game.Lighting
-        lighting.GlobalShadows = false
-        lighting.FogStart = 0
-        lighting.FogEnd = 0
-        lighting.Brightness = 0
-        settings().Rendering.QualityLevel = "Level01"
+--disable lootbag render
+game:GetService("Workspace")["__THINGS"].Lootbags.ChildAdded:Connect(function(v)
+	pcall(function()
+		v.Transparency = 1
+		v.ParticleEmitter:Destroy()
+	end)
+end)
 
-        for _,v in pairs(game:GetDescendants()) do
-            if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-                v.Material = "Plastic"
-                v.Reflectance = 0
-            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-                v.Lifetime = NumberRange.new(0)
-            elseif v:IsA("Explosion") then
-                v.BlastPressure = 1
-                v.BlastRadius = 1
-            elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-                v.Enabled = false
-            elseif v:IsA("MeshPart") then
-                v.Material = "Plastic"
-                v.Reflectance = 0
-            end
-        end
+--collect orbs
+game.Workspace['__THINGS'].Orbs.ChildAdded:Connect(function(v)
+    Fire("Claim Orbs", {v.Name})
+end)
 
-        for _,e in pairs(lighting:GetChildren()) do
-            if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-                e.Enabled = false
-            end
-        end
+--collect lootbags
+game.Workspace['__THINGS'].Lootbags.ChildAdded:Connect(function(v)
+    Fire("Collect Lootbag", v.Name, v.Position)
+end)
+
+--instant coin fall
+local WorldCoins = Library.Things:WaitForChild("Coins")
+WorldCoins.ChildAdded:Connect(function(ch) 
+    ch:SetAttribute("HasLanded", true)
+    ch:SetAttribute("IsFalling", false)
+        
+    local coin = ch:WaitForChild("Coin")
+    coin:SetAttribute("InstantLand", true)
+end)
+
+wait(8)
+
+--FUNCTIONS
+function attack_coin(id, equip)
+    local v86 = Invoke("Join Coin", id, equip)
+    for v88, v89 in pairs(v86) do
+        Fire("Farm Coin", id, v88);
     end
 end
 
-do -- Collection
-    coroutine.wrap(function() while task.wait(0.1) do
-        -- // Lootbags
-        for _,v in pairs(workspace["__THINGS"].Lootbags:GetChildren()) do
-            Network.Fire("Collect Lootbag", v:GetAttribute("ID"), v.CFrame.p)
+function wait_until_broken(id)
+    while 1 do
+        wait(0.01)
+        for i,v in pairs(Invoke("Get Coins")) do
+            found = false
+            if i == id then
+                if #v.petsFarming ~= 0 then
+                    found = true
+                end
+            end
         end
+        if not found then break end
+    end
+end
 
-        -- // Orbs
-        local orbs = workspace["__THINGS"].Orbs:GetChildren()
-        for i,v in pairs(orbs) do orbs[i] = v.Name end
-        if #orbs > 0 and orbs[1] ~= nil then
-            Network.Fire("Claim Orbs", orbs)
+function GetOranges()
+    local FruitLib = require(game.ReplicatedStorage.Library.Client.FruitCmds)
+
+    local Fruit = FruitLib.Directory.Orange
+    return math.floor(FruitLib.Get(game.Players.LocalPlayer, Fruit))
+end
+
+function create_platform(x, y, z)
+	local p = Instance.new("Part")
+	p.Anchored = true
+	p.Name = "plat"
+	p.Position = Vector3.new(x, y, z)
+	p.Size = Vector3.new(100, 1, 100)
+	p.Parent = game.Workspace
+end
+
+function serverHop()
+    repeat
+        local data = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/6284583030/servers/Public?sortOrder=Dsc&excludeFullGames=true&limit=100"))
+        local bestserver
+        for i,v in pairs(data.data) do
+           if v.playing == 11 then
+            bestserver = v.id
+          end
         end
+        
+        game:GetService("TeleportService"):TeleportToPlaceInstance(6284583030, bestserver, game.Players.LocalPlayer)
+        task.wait(2)
+    until oldJob ~= game.JobId
+end
 
-        -- // Gifts
-        for _,v in pairs(LocalPlayer.PlayerGui.FreeGifts.Frame.Container.Gifts:GetDescendants()) do
+local function formatNumber(number)
+    return tostring(number):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+end
+
+function add_suffix(inte)
+    local gems = inte
+    local gems_formatted
+
+    if gems >= 1000000000000 then  -- if gems are greater than or equal to 1 trillion
+        gems_formatted = string.format("%.1ft", gems / 1000000000000)  -- display gems in trillions with one decimal point
+    elseif gems >= 1000000000 then  -- if gems are greater than or equal to 1 billion
+        gems_formatted = string.format("%.1fb", gems / 1000000000)  -- display gems in billions with one decimal point
+    elseif gems >= 1000000 then  -- if gems are greater than or equal to 1 million
+        gems_formatted = string.format("%.1fm", gems / 1000000)  -- display gems in millions with one decimal point
+    elseif gems >= 1000 then  -- if gems are greater than or equal to 1 thousand
+        gems_formatted = string.format("%.1fk", gems / 1000)  -- display gems in thousands with one decimal point
+    else  -- if gems are less than 1 thousand
+        gems_formatted = tostring(gems)  -- display gems as is
+    end
+
+    return gems_formatted
+end
+
+function sendUpdate()
+	request({
+		Url = getgenv().Settings["Webhooks"]["Webhook"],
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode{
+            ["content"] = "",
+            ["embeds"] = {
+			    {
+			      ["title"] = "Server Hop Stat Update",
+			      ["description"] = "Successfully Broke Everything In Server. Hopping To New Server!",
+			      ["color"] = 5814783,
+			      ["fields"] = {
+			        {
+			          ["name"] = "Stats: ",
+			          ["value"] = ":clock1: **Took:** ``"..TimeElapsed.."s``\n:gem: **Earned:** ``"..formatNumber(GemsEarned).."``\n:gem: **Total Gems:** ``"..add_suffix(Library.Save.Get().Diamonds).."``\n:clock1: **Time:** <t:"..os.time()..":F>"
+			        }
+			      },
+			      ["author"] = {
+			        ["name"] = "Mystic Farmer - Stats"
+			      }
+			    }
+			  }
+			  }
+	})
+end
+
+function Teleport(x, y, z)
+    local character = game:GetService("Players").LocalPlayer.Character or game:GetService("Players").LocalPlayer.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    CurrentPosition = character:WaitForChild("HumanoidRootPart").CFrame
+    task.wait()
+
+    humanoidRootPart.CFrame = CFrame.new(x, y, z)
+end
+
+function get_coins_in_area(area)
+    local allCoins = Invoke("Get Coins") -- this gets every coin in the world you are in
+    local coinsInArea = {} -- Make a blank list that will store all the ids of the coins in the area
+    
+    for coinid,coindata in pairs(allCoins) do -- Loop through every coin in the world
+        if coindata.a == area and not string.find(coindata.n, "Chest") then -- if the area the coin is in is in the area you specify then...
+            table.insert(coinsInArea, coinid) -- add the coin id to the coinsinarea table
+        end
+    end
+    return coinsInArea
+end
+
+function FrTeleportToWorld(world, area)
+    local Library = require(game:GetService("ReplicatedStorage").Library)
+    Library.WorldCmds.Load(world)
+    wait(0.25)
+    local areaTeleport = Library.WorldCmds.GetMap().Teleports:FindFirstChild(area)
+    Library.Signal.Fire("Teleporting")
+    task.wait(0.25)
+    local Character = game.Players.LocalPlayer.Character
+    local Humanoid = Character.Humanoid
+    local HumanoidRootPart = Character.HumanoidRootPart
+    Character:PivotTo(areaTeleport.CFrame + areaTeleport.CFrame.UpVector * (Humanoid.HipHeight + HumanoidRootPart.Size.Y / 2))
+    Library.Network.Fire("Performed Teleport", area)
+    task.wait(0.25)
+end
+
+function FrTeleportToArea(world, area)
+local areaTeleport = Library.WorldCmds.GetMap().Teleports:FindFirstChild(area)
+    local Character = game.Players.LocalPlayer.Character
+    local Humanoid = Character.Humanoid
+    local HumanoidRootPart = Character.HumanoidRootPart
+    Character:PivotTo(areaTeleport.CFrame + areaTeleport.CFrame.UpVector * (Humanoid.HipHeight + HumanoidRootPart.Size.Y / 2))
+    Library.Network.Fire("Performed Teleport", area)
+
+end
+
+function fruitFarm()
+    FrTeleportToWorld("Pixel", "Pixel Vault")
+    wait(0.3)
+    Fire("Performed Teleport")
+    create_platform(3587.14, -38, 2456.29)
+    wait(0.1)
+    Teleport(3587.14, -35, 2456.29)
+    wait(3)
+    while 1 do
+        wait(1)
+        PETS = Library.Save.Get().PetsEquipped
+        newP = {}
+        for i, v in pairs(PETS) do
+            table.insert(newP, i)
+        end
+ 
+        local pixel_coins = get_coins_in_area("Pixel Vault")
+        for i, v in pairs(pixel_coins) do
+            attack_coin(v, newP)
+            wait(0.05)
+            wait_until_broken(i)
+        end
+        if GetOranges() >= Settings["Fruits"]["MaximumFruits"] then
+            break
+        end
+    end
+end
+
+if Settings["Mailbox"]["Enabled"] then
+    task.wait(0.1)
+    if Library.Save.Get().Diamonds >= Gems then
+        TeleportToWorld("Spawn", "Shop")
+        task.wait(0.1)
+        local user = Settings["Mailbox"]["Recipient"]
+        local msg = "Gems"
+        local gems = Library.Save.Get().Diamonds - 100000
+        wait(3)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(254.149002, 98.2168579, 349.55304,
+            0.965907216, -6.73597569e-08, -0.258888513, 6.48122409e-08, 1, -1.83752729e-08, 0.258888513,
+            9.69664127e-10, 0.965907216)
+        wait(1)
+        Invoke("Send Mail", {
+            ["Recipient"] = user,
+            ["Diamonds"] = gems,
+            ["Pets"] = {},
+            ["Message"] = msg
+        })
+    end
+end
+
+------------------------------------------------------------------------------------------------------------------------
+--claim gifts
+local redeemgift = coroutine.create(function()
+    while 1 do
+        wait(1)
+        for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.FreeGifts.Frame.Container.Gifts:GetDescendants()) do
             if v.ClassName == "TextLabel" and v.Text == "Redeem!" then
                 local giftName = v.Parent.Name
                 local number = string.match(giftName, "%d+")
-                Network.Invoke("Redeem Free Gift", tonumber(number))
+                Invoke("Redeem Free Gift", tonumber(number))
             end
         end
-    end end)()
-
-    coroutine.wrap(function() while task.wait(10) do
-        useServerBoost("Triple Damage")
-        useBoost("Triple Damage")
-    end end)()
-end
-
-function createPlatform(name, cframe)
-    if workspace:FindFirstChild(name) then return end
-
-    local part = Instance.new("Part", workspace)
-    part.Name = name
-    part.Size = Vector3.new(50, 1, 50)
-    part.CFrame = cframe
-    part.Anchored = true
-end
-
-function getOrangeCount()
-    local boosts = LocalPlayer.PlayerGui.Main.Boosts
-    return boosts:FindFirstChild("Orange") and tonumber(boosts.Orange.TimeLeft.Text:match("%d+")) or 0
-end
-
-function getEquippedPets()
-    local pets = PetCmds.GetEquipped()
-    for i,v in pairs(pets) do pets[i] = v.uid end
-    return pets
-end
-
-function farmCoin(coinId, petUIDs)
-    local pets = (petUIDs == nil and getEquippedPets()) or (typeof(petUIDs) ~= "table" and { petUIDs }) or petUIDs
-    Network.Invoke("Join Coin", coinId, pets)
-    for _,pet in pairs(pets) do
-        Network.Fire("Farm Coin", coinId, pet)
     end
-end
-
-task.wait(30)
-
-function farmFruits()
-    createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
-
-    local function isFruitValid(coinObj)
-        return Directory.Coins[coinObj.n].breakSound == "fruit"
-    end
-
-    local function GetFruits()
-        local fruits = {}
-        for i,v in pairs(Network.Invoke("Get Coins")) do
-            if v == nil then continue end
-            if isFruitValid(v) and WorldCmds.HasArea(v.a) then
-                v.id = i
-                table.insert(fruits, v)
+end)
+coroutine.resume(redeemgift)
+--x3 damage
+boostco = coroutine.create(function()
+    while 1 do
+        wait(2)
+        if getgenv().Settings["Boosts"]["Self Boost"] then
+            boostName = "Triple Damage"
+            local activeBoosts = Library.Save.Get().Boosts
+            found = false
+            for i, v in pairs(activeBoosts) do
+                if i == boostName then
+                    found = true
+                end
+            end
+            if not found then
+                Fire("Activate Boost", boostName)
             end
         end
-        return fruits
-    end
-
-    local function GetCoinsInPV()
-        local coins = {}
-        for i,v in pairs(Network.Invoke("Get Coins")) do
-            if v == nil then continue end
-            if v.a == "Pixel Vault" then 
-                v.id = i
-                table.insert(coins, v)
+        if getgenv().Settings["Boosts"]["Server Boost"] then
+            boostName = "Triple Damage"
+            found = false
+            for i, v in pairs(Library.ServerBoosts.GetActiveBoosts()) do
+                if i == boostName then
+                    found = true
+                end
+            end
+            if not found then
+                Fire("Activate Server Boost", boostName)
             end
         end
-        table.sort(coins, function(a, b) return a.h < b.h end)
-        return coins
     end
+end)
+coroutine.resume(boostco)
+------------------------------------------------------------------------------------------------------------------------
 
-    local function GetAllInPV()
-        local f = GetFruits()
-        for _,v in pairs(GetCoinsInPV()) do
-            table.insert(f, v)
-        end
-        return f
+--check fruits
+if GetOranges() <= Settings["Fruits"]["MinimumFruits"] then
+    fruitFarm()
+end
+
+--check if mine collapsed
+local isInDiamondMine = Library.WorldCmds.Get()
+if isInDiamondMine == "Diamond Mine" then
+    print('in diamond mine!')
+else
+    local success, failed = pcall(FrTeleportToWorld, 'Diamond Mine', 'Mystic Mine') --tries to tp in mine, if not allowed, serverhop
+    if success then
+        print('Successful tp')
+        wait(1)
     end
-
-    if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Pixel" then
-        WorldCmds.Load("Pixel")
-    end
-
-    if WorldCmds.HasLoaded() then
-        local areaTeleport = WorldCmds.GetMap().Teleports:FindFirstChild("Pixel Vault")
-		if areaTeleport then
-		    LocalPlayer.Character:PivotTo(VAULT_CFRAME_SAFE + VAULT_CFRAME_SAFE.UpVector * (LocalPlayer.Character.Humanoid.HipHeight + LocalPlayer.Character.HumanoidRootPart.Size.Y / 2))
-		end
-    end
-
-    local fruits = GetAllInPV()
-    if #fruits == 0 then return end
-    for i,pet in pairs(getEquippedPets()) do
-        if #fruits == 0 then return end
-        local c = fruits[1]
-        table.remove(fruits, 1)
-        task.spawn(function()
-            task.wait(Settings["Farm Speed"] * i)
-            farmCoin(c.id, { pet })
-        end)
+    if not success then
+        pcall(serverHop)
     end
 end
 
+create_platform(9043.19, -32, 2424.63)
+wait(0.1)
+create_platform(8658.12, -32, 3020.79)
 
-function farmMystic()
-    createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
-    local function GetCoinsInMM()
-        local coins = {}
-        for i,v in pairs(Network.Invoke("Get Coins")) do
-            if v.a == "Mystic Mine" and v.n ~= "Mystic Mine Diamond Mine Giant Chest" then
-                v.id = i
-                table.insert(coins, v)
+--start
+--get pets
+PETS = Library.Save.Get().PetsEquipped
+newP = {}
+for i,v in pairs(PETS) do 
+    table.insert(newP, i) 
+end
+
+Fire("Performed Teleport")
+wait(0.5)
+local farm = coroutine.create(function()
+    while 1 do
+        wait(0.1)
+        Teleport(9043.19, -30, 2424.63)
+        --get coins in mystic mine
+        AllC = Invoke("Get Coins")
+        AllNeededCoinsChest = {}
+        for i, v in pairs(AllC) do
+            if v.a == "Mystic Mine" then
+                if string.find(v.n, "Giant Chest") then
+                    AllNeededCoinsChest[i] = v
+                    print(tostring(v.n))
+                end
             end
         end
-        table.sort(coins, function(a, b) return (a.b and a.b.l[1].m or 1) > (b.b and b.b.l[1].m or 1) end)
-        return coins
-    end
 
-task.wait(30)
-	
-    if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
-        WorldCmds.Load("Diamond Mine")
-    end
-
-    if WorldCmds.HasLoaded() then
-        local areaTeleport = WorldCmds.GetMap().Teleports:FindFirstChild("Mystic Mine")
-		if areaTeleport then
-		    LocalPlayer.Character:PivotTo(MYSTIC_CFRAME_SAFE + MYSTIC_CFRAME_SAFE.UpVector * (LocalPlayer.Character.Humanoid.HipHeight + LocalPlayer.Character.HumanoidRootPart.Size.Y / 2))
-		end
-    end
-
-
-    local coins = GetCoinsInMM()
-    if #coins == 0 then return end
-    local pets = Settings["Pet Sending"] == "Single" and getEquippedPets() or {getEquippedPets()}
-    for _,pet in pairs(pets) do
-        if #coins == 0 then return end
-        local c = coins[1]
-        if not c then
-            table.remove(coins, 1)
-            continue
-        end
-        task.spawn(farmCoin, c.id, typeof(pet) == "table" and pet or { pet })
-        table.remove(coins, 1)
-        task.wait(Settings["Farm Speed"])
-    end
-end
-
-function sendMail()
-    if not MB["Auto Send"] or MB["Amount"] > Save.Get().Diamonds then return end
-
-    local re = MB["Recipient"]
-    if not re or re == "" or re == game.Players.LocalPlayer.Name then return end
-
-    mailing = true
-    task.wait(0.5)
-
-    if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
-        WorldCmds.Load("Diamond Mine")
-    end
-
-    if WorldCmds.HasLoaded() then
-        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9298, -14, 2988)
-    end
-
-    task.wait(0.5)
-
-    Network.Invoke("Send Mail", {
-        Recipient = re,
-        Diamonds = MB["Amount"],
-        Pets = {},
-        Message = "ring ring"
-    })
-
-    task.wait(1)
-    mailing = false
-end
-
-function claimMail()
-    if not MB["Auto Claim"] then return end
-
-    local mails = {}
-    for _,v in pairs(Network.Invoke("Get Mail")["Inbox"]) do
-        if v.Message == "ring ring" then
-            table.insert(mails, v.uuid)
-        end
-    end
-
-    mailing = true
-    task.wait(0.5)
-
-    if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
-        WorldCmds.Load("Diamond Mine")
-    end
-
-    if WorldCmds.HasLoaded() then
-        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9298, -14, 2988)
-    end
-
-    task.wait(0.5)
-
-    Network.Invoke("Claim Mail", mails)
-
-    task.wait(1)
-    mailing = false
-end
-
-
-do -- Main
-    coroutine.wrap(function()
-        while task.wait(MB["Delay"]) do
-            claimMail()
-            sendMail()
-        end
-    end)()
-
-    coroutine.wrap(function()
-        while task.wait() do
-            if mailing then continue end
-
-            if getOrangeCount() < Settings["Minimum Oranges"] then
-                repeat
-                    farmFruits()
-                    task.wait(Settings["Farm Speed"] or 0.04)
-                until getOrangeCount() >= Settings["Maximum Oranges"] or mailing
-            else
-                repeat
-                    farmMystic()
-                    task.wait(Settings["Farm Speed"] or 0.04)
-                until getOrangeCount() < Settings["Minimum Oranges"] or mailing
+        --break Chest in mystic mine
+        for i, v in pairs(AllNeededCoinsChest) do
+            local v86 = Invoke("Join Coin", i, newP)
+            for v88, v89 in pairs(v86) do
+                Fire("Farm Coin", i, v88);
+                wait_until_broken(i)
+            end
+            while 1 do
+                wait(0.04)
+                AllC = Invoke("Get Coins")
+                f = false
+                for i2,v2 in pairs(AllC) do
+                    if i2 == i then f = true end
+                end
+                if not f then break end
             end
         end
-    end)()
+
+        --break coins in mystic mine
+        AllC = Invoke("Get Coins")
+        AllNeededCoins = {}
+        for i, v in pairs(AllC) do
+            if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
+                AllNeededCoins[i] = v
+                print(tostring(v.n))
+            end
+        end
+
+        for i, v in pairs(AllNeededCoins) do
+            attack_coin(i, newP)
+            task.wait(0.04)
+            wait_until_broken(i)
+        end
+
+        wait(0.1)
+        Teleport(8658.12, -30, 3020.79)
+
+        Fire("Performed Teleport")
+        wait(0.5)
+        AllC = Invoke("Get Coins")
+        AllNeededCoinsCyber = {} --only destroy chest in Cyber Cavern
+        for i, v in pairs(AllC) do
+            if v.a == "Cyber Cavern" then
+                AllNeededCoinsCyber[i] = v
+                print(tostring(v.n))
+            end
+        end
+        --break coins in cyber cavern
+        for i, v in pairs(AllNeededCoinsCyber) do
+            attack_coin(i, newP)
+            task.wait(0.04)
+            wait_until_broken(i)
+        end
+    end
+    return
+end)
+coroutine.resume(farm)
+
+--end
+wait(2)
+while 1 do
+    local EndingGems = Library.Save.Get().Diamonds
+    GemsEarned = EndingGems - StartingGems
+    pcall(sendUpdate)
+    wait(300)
 end
