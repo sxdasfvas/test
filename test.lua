@@ -392,7 +392,7 @@ local farm = coroutine.create(function()
         AllNeededCoinsChest = {}
         for i, v in pairs(AllC) do
             if v.a == "Mystic Mine" then
-                if string.find(v.n, "Giant Chest") then
+                if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
                     AllNeededCoinsChest[i] = v
                     print(tostring(v.n))
                 end
