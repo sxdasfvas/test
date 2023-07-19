@@ -13,7 +13,7 @@ local Settings = {
         ["Enabled"] = false
     },
     ["Fruits"] = {
-        ["MinimumFruits"] = 100,
+        ["MinimumFruits"] = -1,
         ["MaximumFruits"] = 150 
     },
 }
@@ -365,7 +365,6 @@ else
         wait(1)
     end
     if not success then
-        pcall(serverHop)
     end
 end
 
@@ -392,7 +391,7 @@ local farm = coroutine.create(function()
         AllNeededCoinsChest = {}
         for i, v in pairs(AllC) do
             if v.a == "Mystic Mine" then
-                if v.a == "Mystic Mine" and not string.find(v.n, "Giant Chest") then
+                if string.find(v.n, "Giant Chest") then
                     AllNeededCoinsChest[i] = v
                     print(tostring(v.n))
                 end
