@@ -25,6 +25,8 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
+settings().Rendering.QualityLevel = 1
+game:GetService"RunService":Set3dRenderingEnabled(false)
 
 -- VARIABLES/LOCALS
 local platform = nil
@@ -56,9 +58,10 @@ coroutine.resume(timer)
 -- Settings
 getgenv().Settings = Settings
 
--- Rest of the code...
-
-
+-- Anti AFK
+for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+v:Disable()
+end
 
 --disable orbs render
 game:GetService("Workspace")["__THINGS"].Orbs.ChildAdded:Connect(function(v)
