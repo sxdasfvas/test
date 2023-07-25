@@ -1,7 +1,7 @@
 getgenv().Settings = {
     ["Farm Speed"] = 0.40,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 100,
+    ["Minimum Oranges"] = 195,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
