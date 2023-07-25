@@ -1,3 +1,6 @@
+repeat task.wait() until game:IsLoaded()
+task.wait(5)
+
 getgenv().Settings = {
     ["Farm Speed"] = 0.40,
     ["Pet Sending"] = "Single", -- All or Single
