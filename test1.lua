@@ -1,15 +1,10 @@
-repeat
-    task.wait()
-until game.PlaceId ~= nil
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
-repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
+repeat task.wait() until game:IsLoaded()
+task.wait(10)
 
 getgenv().Settings = {
-    ["Farm Speed"] = 0.40,
+    ["Farm Speed"] = 0.30,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 100,
+    ["Minimum Oranges"] = 150,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
@@ -180,8 +175,6 @@ function getEquippedPets()
     return pets
 end
 
-task.wait(60)
-
 function farmCoin(coinId, petUIDs)
     local pets = (petUIDs == nil and getEquippedPets()) or (typeof(petUIDs) ~= "table" and { petUIDs }) or petUIDs
     Network.Invoke("Join Coin", coinId, pets)
@@ -189,6 +182,8 @@ function farmCoin(coinId, petUIDs)
         Network.Fire("Farm Coin", coinId, pet)
     end
 end
+
+task.wait(60)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
@@ -254,7 +249,6 @@ function farmFruits()
     end
 end
 
-task.wait(60)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
@@ -269,6 +263,8 @@ function farmMystic()
         table.sort(coins, function(a, b) return (a.b and a.b.l[1].m or 1) > (b.b and b.b.l[1].m or 1) end)
         return coins
     end
+
+task.wait(60)
 	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
