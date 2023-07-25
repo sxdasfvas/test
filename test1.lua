@@ -9,7 +9,7 @@ repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:Fi
 getgenv().Settings = {
     ["Farm Speed"] = 0.40,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 197,
+    ["Minimum Oranges"] = 198,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
