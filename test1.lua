@@ -9,7 +9,7 @@ repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:Fi
 getgenv().Settings = {
     ["Farm Speed"] = 0.40,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 196,
+    ["Minimum Oranges"] = 197,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
@@ -180,8 +180,6 @@ function getEquippedPets()
     return pets
 end
 
-task.wait(30)
-
 function farmCoin(coinId, petUIDs)
     local pets = (petUIDs == nil and getEquippedPets()) or (typeof(petUIDs) ~= "table" and { petUIDs }) or petUIDs
     Network.Invoke("Join Coin", coinId, pets)
@@ -253,8 +251,6 @@ function farmFruits()
         end)
     end
 end
-
-task.wait(30)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
