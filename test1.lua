@@ -180,6 +180,8 @@ function getEquippedPets()
     return pets
 end
 
+task.wait(30)
+
 function farmCoin(coinId, petUIDs)
     local pets = (petUIDs == nil and getEquippedPets()) or (typeof(petUIDs) ~= "table" and { petUIDs }) or petUIDs
     Network.Invoke("Join Coin", coinId, pets)
@@ -252,6 +254,7 @@ function farmFruits()
     end
 end
 
+task.wait(30)
 
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
