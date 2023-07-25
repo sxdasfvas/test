@@ -252,6 +252,8 @@ function farmFruits()
     end
 end
 
+task.wait(30)
+
 function farmMystic()
     createPlatform("Safe-Mystic", MYSTIC_CFRAME_SAFE)
     local function GetCoinsInMM()
