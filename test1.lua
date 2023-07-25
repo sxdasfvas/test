@@ -1,5 +1,10 @@
-repeat task.wait() until game:IsLoaded()
-task.wait(30)
+repeat
+    task.wait()
+until game.PlaceId ~= nil
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
 
 getgenv().Settings = {
     ["Farm Speed"] = 0.40,
