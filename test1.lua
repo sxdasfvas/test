@@ -1,7 +1,5 @@
 repeat task.wait() until game:IsLoaded()
 task.wait(10)
-settings().Rendering.QualityLevel = 1
-game:GetService"RunService":Set3dRenderingEnabled(false)
 
 getgenv().Settings = {
     ["Farm Speed"] = 0.30,
