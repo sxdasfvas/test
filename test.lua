@@ -2,9 +2,9 @@ repeat task.wait() until game:IsLoaded()
 task.wait(10)
 
 getgenv().Settings = {
-    ["Farm Speed"] = 0.40,
+    ["Farm Speed"] = 0.30,
     ["Pet Sending"] = "Single", -- All or Single
-    ["Minimum Oranges"] = 170,
+    ["Minimum Oranges"] = 150,
     ["Maximum Oranges"] = 200,
     ["Mailbox"] = {
         ["Auto Claim"] = false,
@@ -183,7 +183,7 @@ function farmCoin(coinId, petUIDs)
     end
 end
 
-task.wait(30)
+task.wait(60)
 
 function farmFruits()
     createPlatform("Safe-Vault", VAULT_CFRAME_SAFE)
@@ -264,7 +264,7 @@ function farmMystic()
         return coins
     end
 
-task.wait(30)
+task.wait(60)
 	
     if WorldCmds.HasLoaded() and WorldCmds.Get() ~= "Diamond Mine" then
         WorldCmds.Load("Diamond Mine")
