@@ -1,5 +1,5 @@
-wait(1000)
+wait(1100)
 
 local player = game.Players.LocalPlayer
 
-player:Kick("1000s")
+player:Kick("1100s")
