@@ -19,7 +19,7 @@ getgenv().Settings = {
     },
     ["Mailbox"] = {
         ["Enabled"] = true, -- true sends auto gems, false it dont
-        ["Delay"] = 60,
+        ["Delay"] = 30,
         ["Recipient"] = "Pr4m0t", -- Username that gets the gems via mail.
         ["Amount"] = 49000000000, -- Amount (49B is good because of the 50B daily)
         ["Auto Redeem"] = true
