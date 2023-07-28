@@ -1,4 +1,4 @@
-wait(3000)
+wait(3600)
 
 local player = game.Players.LocalPlayer
 
