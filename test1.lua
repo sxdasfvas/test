@@ -1,5 +1,5 @@
 repeat task.wait() until game:IsLoaded()
-task.wait(100)
+task.wait(150)
 script_key="tlClaHDMEVLHCVznuBbZZnCneFncboRR";
 
 getgenv().Settings = {
