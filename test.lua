@@ -19,13 +19,13 @@ getgenv().Settings = {
     },
     ["Mailbox"] = {
         ["Enabled"] = true, -- true sends auto gems, false it dont
-        ["Delay"] = 30,
+        ["Delay"] = 60,
         ["Recipient"] = "Pr4m0t", -- Username that gets the gems via mail.
         ["Amount"] = 49000000000, -- Amount (49B is good because of the 50B daily)
         ["Auto Redeem"] = true
     },
     ["Performance"] = {
-        ["FPS Cap"] = 60,
+        ["FPS Cap"] = 30,
         ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
