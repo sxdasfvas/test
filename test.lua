@@ -12,7 +12,7 @@ getgenv().Settings = {
     ["Minimum Oranges"] = 100,
     ["Maximum Oranges"] = 150,
     ["Mystic Mine"] = true, -- Mines Mystic
-    ["Cyber Cavern"] = true, -- Mines Cybern
+    ["Cyber Cavern"] = false, -- Mines Cybern
     ["Minimum Multiplier"] = {
         ["Giant Chest"] = 1,
         ["Other"] = 1
@@ -26,7 +26,7 @@ getgenv().Settings = {
     },
     ["Performance"] = {
         ["FPS Cap"] = 60,
-        ["Disable Rendering"] = false, -- set to true to save GPU/CPU (Screen White)
+        ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
 }
