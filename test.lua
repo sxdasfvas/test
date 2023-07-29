@@ -8,7 +8,7 @@ getgenv().Settings = {
     ["KickOnCollapse"] = false, -- Will kick you Daily Collapse BUT u should recheck after 6-8 hours he dont get it thats open again before u dont join 1 time
     ["HideChatName"] = true, -- Hide ingame name and chat
     ["FruitHop"] = false, -- If true it hopes world&server if false it do Pixel Vault.
-    ["RandomPos"] = false, -- If true it changes a bit world positions but farming maybe will be bit slower.
+    ["RandomPos"] = true, -- If true it changes a bit world positions but farming maybe will be bit slower.
     ["Minimum Oranges"] = 170,
     ["Maximum Oranges"] = 200,
     ["Mystic Mine"] = true, -- Mines Mystic
@@ -26,7 +26,7 @@ getgenv().Settings = {
     },
     ["Performance"] = {
         ["FPS Cap"] = 55,
-        ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
+        ["Disable Rendering"] = false, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
 }
