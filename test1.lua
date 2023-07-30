@@ -4,7 +4,7 @@ script_key="tlClaHDMEVLHCVznuBbZZnCneFncboRR";
 
 getgenv().Settings = {
 ["Webhook"] = "https://discord.com/api/webhooks/1116895553096253542/ljzDDJyGbHamPaur6MOyrVG-MElqYcd9oV1ivp3rq5KuL8ar10leYf4ZHSS3lyhUdGt6", -- Discord Webhook url for 10 minutes hook.
-    ["Farm Speed"] = 0.50,
+    ["Farm Speed"] = 0.01,
     ["KickOnCollapse"] = false, -- Will kick you Daily Collapse BUT u should recheck after 6-8 hours he dont get it thats open again before u dont join 1 time
     ["HideChatName"] = true, -- Hide ingame name and chat
     ["FruitHop"] = false, -- If true it hopes world&server if false it do Pixel Vault.
