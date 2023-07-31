@@ -10,7 +10,7 @@ getgenv().Settings = {
     ["FruitHop"] = false, -- If true it hopes world&server if false it do Pixel Vault.
     ["RandomPos"] = false, -- If true it changes a bit world positions but farming maybe will be bit slower.
     ["Minimum Oranges"] = 170,
-    ["Maximum Oranges"] = 199,
+    ["Maximum Oranges"] = 200,
     ["Mystic Mine"] = true, -- Mines Mystic
     ["Cyber Cavern"] = true, -- Mines Cybern
     ["Minimum Multiplier"] = {
@@ -26,7 +26,7 @@ getgenv().Settings = {
     },
     ["Performance"] = {
         ["FPS Cap"] = 55,
-        ["Disable Rendering"] = false, -- set to true to save GPU/CPU (Screen White)
+        ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
 }
