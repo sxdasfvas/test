@@ -1,3 +1,4 @@
+repeat wait() until game:IsLoaded()
 script_key="EHktfgNvCHcooBXlDySsGBGtRZotRgON";
 
 getgenv().Settings = {
