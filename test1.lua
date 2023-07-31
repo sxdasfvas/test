@@ -1,5 +1,5 @@
-if not game:IsLoaded() then game.Loaded:Wait() end
-task.wait(5)
+repeat wait() until game:IsLoaded()
+wait(10)
 
 script_key="tlClaHDMEVLHCVznuBbZZnCneFncboRR";
 
