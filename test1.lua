@@ -1,5 +1,5 @@
-repeat wait() until game:IsLoaded()
-wait(10)
+if not game:IsLoaded() then game.Loaded:Wait() end
+task.wait(10)
 
 script_key="tlClaHDMEVLHCVznuBbZZnCneFncboRR";
 
@@ -27,7 +27,7 @@ getgenv().Settings = {
     },
     ["Performance"] = {
         ["FPS Cap"] = 55,
-        ["Disable Rendering"] = false, -- set to true to save GPU/CPU (Screen White)
+        ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
 }
