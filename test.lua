@@ -1,5 +1,3 @@
-wait(10)
-
 script_key="EHktfgNvCHcooBXlDySsGBGtRZotRgON";
 
 getgenv().Settings = {
