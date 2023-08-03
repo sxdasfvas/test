@@ -12,7 +12,7 @@ getgenv().Settings = {
     ["Mystic Mine"] = true, -- Mines Mystic
     ["Cyber Cavern"] = true, -- Mines Cybern
     ["Minimum Multiplier"] = {
-        ["Giant Chest"] = 1,
+        ["Giant Chest"] = 0,
         ["Other"] = 10
     },
     ["Mailbox"] = {
