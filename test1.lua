@@ -13,7 +13,7 @@ getgenv().Settings = {
     ["Cyber Cavern"] = true, -- Mines Cybern
     ["Minimum Multiplier"] = {
         ["Giant Chest"] = 999,
-        ["Other"] = 10
+        ["Other"] = 1
     },
     ["Mailbox"] = {
         ["Enabled"] = true, -- true sends auto gems, false it dont
