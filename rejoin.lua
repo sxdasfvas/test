@@ -1,4 +1,3 @@
-wait(10)
 repeat wait() until game:IsLoaded()
 wait(1000)
 
