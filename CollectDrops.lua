@@ -1,13 +1,14 @@
-local orbs = game:GetService("Workspace")["__THINGS"].Orbs
-local lootbags = game:GetService("Workspace")["__THINGS"].Lootbags
-_G.start = true;
-while wait() and _G.start == true do
-    for _,orb in pairs(orbs:GetChildren()) do
-        orb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
-        wait();
-    end    
-    for _,orb in pairs(lootbags:GetChildren()) do
-        orb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
-        wait();
-    end
+getgenv().ToggleL = true -- if you want stop just type false
+while getgenv().ToggleL do wait()
+-- Orbs
+for i,v in pairs(game:GetService("Workspace")["__THINGS"].Orbs:GetChildren()) do
+v.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+wait(0.5);
+end
+
+-- Lootbags      
+for i,v in pairs(game:GetService("Workspace")["__THINGS"].Lootbags:GetChildren()) do
+v.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+wait(0.5);
+end
 end
