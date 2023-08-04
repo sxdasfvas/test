@@ -24,7 +24,7 @@ getgenv().Settings = {
     },
     ["Performance"] = {
         ["FPS Cap"] = 30,
-        ["Disable Rendering"] = false, -- set to true to save GPU/CPU (Screen White)
+        ["Disable Rendering"] = true, -- set to true to save GPU/CPU (Screen White)
         ["Downgraded Quality"] = true
     }
 }
