@@ -4,8 +4,10 @@ _G.start = true;
 while wait() and _G.start == true do
     for _,orb in pairs(orbs:GetChildren()) do
         orb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
+        wait(0.5);
     end    
     for _,orb in pairs(lootbags:GetChildren()) do
         orb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
+        wait(0.5);
     end
 end
