@@ -1,5 +1,4 @@
-
-wait(20)
+wait(60)
 
 repeat wait(1) until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
