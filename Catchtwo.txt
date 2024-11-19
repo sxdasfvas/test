@@ -317,7 +317,7 @@ local function WebsiteData()
 
         -- Updated URL
         local response = request({
-            Url = 'https://67f552e4-5e03-4d76-bc81-e7c398e4e63f-00-1db81sgqdm8hk.riker.replit.dev/update',
+            Url = '',
             Method = 'POST',
             Headers = {
                 ['Content-Type'] = 'application/json'
