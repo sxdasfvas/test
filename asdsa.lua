@@ -14,10 +14,10 @@ getgenv().Settings = {
         },
         Serverhop = {
             ["Switch Servers"] = true,
-            ["Teleport Delay (s)"] = 1,
+            ["Teleport Delay (s)"] = 3,
             ["Add Pro Plaza Lobbies"] = false,
             ["Constant Terminal Searching"] = true,
-            ["Terminal Searches per Item"] = 1,
+            ["Terminal Searches per Item"] = 3,
             ["Save # Servers"] = 10,
         },
         Webhook = {
