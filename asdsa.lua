@@ -8,7 +8,6 @@ getgenv().Settings = {
                 [[ Terminal doesn't support custom keywords like "All Huges". ]],
 
                 ["Huge Red Wolf"] = {Class = "Pet", Price = 20000000},
-                ["Huge Scarecrow Dog"] = {Class = "Pet", Price = 20000000},
        
             },
         },
