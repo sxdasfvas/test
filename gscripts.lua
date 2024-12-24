@@ -4,7 +4,6 @@ script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
 _G.GDO_HOLIDAY_EVENT = true
 _G.GDO_SNOWSTORM_SURVIVAL = false
 _G.GCONVERT_SNOWFLAKES = true
-_G.GMASTERY_TO_MAX = "Pets"
 _G.GGFX_MODE = 1
 _G.GZONE_TO = 999
 _G.GPOTIONS = {"Coins","Lucky","The Cocktail","Treasure Hunter","Walkspeed","Diamonds","Damage"}
