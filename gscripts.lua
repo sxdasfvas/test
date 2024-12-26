@@ -13,12 +13,12 @@ _G.GWEBHOOK_USERID = "1167566243969126442"
 _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1311053918716825720/Vi7JJ2QrcUtkNdGixBbwBWLl-uyhAzj2opmljacNj1hAML808QkEmcj2U5sPelLG475s"
 _G.GMAIL_RECEIVERS = {"Pr4m0t"}
 _G.GMAIL_ITEMS = {
-  ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 300},
+  ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 200},
   ["2024 Gargantuan Christmas Present"] = {Class = "Lootbox", Id = "2024 Gargantuan Christmas Present", MinAmount = 1},
   ["2024 X-Large Christmas Present"] = {Class = "Lootbox", Id = "2024 X-Large Christmas Present", MinAmount = 10},
-  ["2024 Large Christmas Present"] = {Class = "Lootbox", Id = "2024 Large Christmas Present", MinAmount = 50},
-  ["2024 Medium Christmas Present"] = {Class = "Lootbox", Id = "2024 Medium Christmas Present", MinAmount = 150},
-  ["2024 Small Christmas Present"] = {Class = "Lootbox", Id = "2024 Small Christmas Present", MinAmount = 300},
+  ["2024 Large Christmas Present"] = {Class = "Lootbox", Id = "2024 Large Christmas Present", MinAmount = 25},
+  ["2024 Medium Christmas Present"] = {Class = "Lootbox", Id = "2024 Medium Christmas Present", MinAmount = 50},
+  ["2024 Small Christmas Present"] = {Class = "Lootbox", Id = "2024 Small Christmas Present", MinAmount = 200},
   ["2024 New Years Gift"] = {Class = "Lootbox", Id = "2024 New Years Gift", MinAmount = 1},
   ["Snowglobe eggs"] = {Class = "Egg", Id = "Exclusive Egg 40", MinAmount = 1},
   ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
