@@ -2,7 +2,7 @@ repeat wait(10) until game:IsLoaded()
 task.spawn(function()
 script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
 _G.GDO_HOLIDAY_EVENT = true
-_G.GDO_SNOWSTORM_SURVIVAL = false
+_G.GDO_SNOWSTORM_SURVIVAL = true
 _G.GCONVERT_SNOWFLAKES = true
 _G.GGFX_MODE = 1
 _G.GZONE_TO = 99
