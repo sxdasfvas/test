@@ -1,6 +1,6 @@
 repeat wait(10) until game:IsLoaded()
 getgenv().Config = {
-    ["EquipEnchants"] = {"Lucky Eggs", "Lucky Eggs", "Lucky Eggs", "Criticals", "Treasure Hunter", "Treasure Hunter"},
+    ["EquipEnchants"] = {"Lucky Eggs", "Lucky Eggs", "Lucky Eggs", "Strong Pets", "Coins", "Fortune"},
     ["SnowstormSurvival"] = true,
     ["Mailing"] = {
         ["Usernames"] = {"Pr4m0t"},
