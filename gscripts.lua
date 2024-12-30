@@ -17,7 +17,7 @@ _G.GMAIL_ITEMS = {
   ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 400},
   ["Cove Lockpick"] = {Class = "Misc", Id = "Lockpick A", MinAmount = 30},
   ["Gold Lockpick"] = {Class = "Misc", Id = "Lockpick B", MinAmount = 10},
-  ["Diamond Lockpick"] = {Class = "Misc", Id = "Lockpick C", MinAmount = 1},
+  ["Diamond Lockpick"] = {Class = "Misc", Id = "Lockpick C", MinAmount = 5},
   ["Normals"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1},
   ["Shinies"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1, IsShiny = true},
   ["Goldens"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1, IsGold = true},
