@@ -14,10 +14,10 @@ _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1311053918716825720/Vi7JJ2Q
 _G.GMAIL_RECEIVERS = {"Pr4m0t"}
 _G.GMAIL_ITEMS = {
   ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
-  ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 200},
+  ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 400},
   ["Jolly Gifts"] = {Class = "Lootbox", Id = "Jolly Gift", MinAmount = 50},
   ["Cove Lockpick"] = {Class = "Misc", Id = "Lockpick A", MinAmount = 35},
-  ["Gold Lockpick"] = {Class = "Misc", Id = "Lockpick B", MinAmount = 2},
+  ["Gold Lockpick"] = {Class = "Misc", Id = "Lockpick B", MinAmount = 15},
   ["Diamond Lockpick"] = {Class = "Misc", Id = "Lockpick C", MinAmount = 1},
   ["Normals"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1},
   ["Shinies"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1, IsShiny = true},
