@@ -4,6 +4,7 @@ script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
 _G.GDO_HOLIDAY_EVENT = true
 _G.GDO_SNOWSTORM_SURVIVAL = true
 _G.GCONVERT_SNOWFLAKES = true
+_G.GDO_LOCKPICKING = true
 _G.GGFX_MODE = 1
 _G.GZONE_TO = 99
 _G.GPOTIONS = {"Coins","Lucky","The Cocktail","Treasure Hunter","Walkspeed","Diamonds","Damage"}
@@ -16,9 +17,6 @@ _G.GMAIL_ITEMS = {
   ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
   ["Snowflake Gifts"] = {Class = "Lootbox", Id = "Snowflake Gift", MinAmount = 400},
   ["Jolly Gifts"] = {Class = "Lootbox", Id = "Jolly Gift", MinAmount = 50},
-  ["Cove Lockpick"] = {Class = "Misc", Id = "Lockpick A", MinAmount = 35},
-  ["Gold Lockpick"] = {Class = "Misc", Id = "Lockpick B", MinAmount = 15},
-  ["Diamond Lockpick"] = {Class = "Misc", Id = "Lockpick C", MinAmount = 1},
   ["Normals"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1},
   ["Shinies"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1, IsShiny = true},
   ["Goldens"] = {Class = "Pet", Id = "Poinsettia Peacock", MinAmount = 1, IsGold = true},
