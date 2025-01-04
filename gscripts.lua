@@ -1,12 +1,10 @@
 repeat wait(10) until game:IsLoaded()
 task.spawn(function()
 script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
-_G.GDO_HOLIDAY_EVENT = true
-_G.GDO_SNOWSTORM_SURVIVAL = true
-_G.GCONVERT_SNOWFLAKES = true
-_G.GDO_LOCKPICKING = true
+_G.GPROGRESS_MODE = "Hybrid"
 _G.GGFX_MODE = 1
-_G.GZONE_TO = 99
+_G.GRANK_TO = 99
+_G.GZONE_TO = 999
 _G.GPOTIONS = {"Coins","Lucky","The Cocktail","Treasure Hunter","Walkspeed","Diamonds","Damage"}
 _G.GHATCH_CHARGED_EGGS = false
 _G.GENCHANTS = {"Lucky Eggs", "Lucky Eggs", "Lucky Eggs", "Criticals", "Treasure Hunter", "Treasure Hunter"}
