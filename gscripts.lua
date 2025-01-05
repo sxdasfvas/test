@@ -19,42 +19,10 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/34915da4ad87a5
 end)
 task.spawn(function()
     task.wait(30)
-    
-    game.Players.PlayerAdded:Connect(function(player)
-        player.CharacterAdded:Connect(function(character)
-            for _, v in pairs(character:GetDescendants()) do
-                if v:IsA("BasePart") or v:IsA("Decal") then
-                    v.Transparency = 1
-                end
-            end
-        end)
-    end)
+local StarterGui = game:GetService('StarterGui')
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 
-    -- ตั้งค่าความโปร่งใสของ BasePart และ Part ในเกม
-    for _, v in pairs(game:GetDescendants()) do
-        if v:IsA("BasePart") then
-            v.Transparency = 1
-        end
-    end
+game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 
-    -- ปิด ScreenGui ใน PlayerGui ของ LocalPlayer
-    for _, v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
-        if v:IsA("ScreenGui") then
-            v.Enabled = false
-        end
-    end
-
-    -- ปิด ScreenGui ใน StarterGui
-    for _, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-        if v:IsA("ScreenGui") then
-            v.Enabled = false
-        end
-    end
-
-    -- ปิด ScreenGui ใน CoreGui
-    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-        if v:IsA("ScreenGui") then
-            v.Enabled = false
-        end
-    end
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false)
 end)
