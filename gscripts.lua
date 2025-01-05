@@ -1,3 +1,4 @@
+repeat wait(10) until game:IsLoaded()
 getgenv().Config = {
     ["Farming"] = {
         ["AutoEvents"] = {"Party Box"},
