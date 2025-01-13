@@ -2,6 +2,9 @@ repeat wait(10) until game:IsLoaded()
 task.spawn(function()
 script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
 _G.GPROGRESS_MODE = "Hybrid"
+_G.GDO_PETGAMES_EVENT = true
+_G.GDO_CONTROL_ROOM = true
+_G.GPAW_RAFFLE_ENTRIES = 100
 _G.GGFX_MODE = 1
 _G.GRANK_TO = 99
 _G.GZONE_TO = 999
