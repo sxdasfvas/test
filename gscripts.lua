@@ -4,7 +4,7 @@ script_key = "ipXBywOqWcuQMMEBBCmVrvDBXrSRfJLd";
 _G.GPROGRESS_MODE = "Hybrid"
 _G.GDO_PETGAMES_EVENT = true
 _G.GDO_CONTROL_ROOM = true
-_G.GPAW_RAFFLE_ENTRIES = 200
+_G.GPAW_RAFFLE_ENTRIES = 500
 _G.GGFX_MODE = 1
 _G.GRANK_TO = 99
 _G.GZONE_TO = 999
@@ -45,4 +45,8 @@ StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false)
+
+for _, v in pairs(game:GetService("CoreGui"):GetDescendants()) do
+        pcall(function() v:Destroy() end)
+    end
 end)
