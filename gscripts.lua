@@ -45,8 +45,4 @@ StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false)
-
-for _, v in pairs(game:GetService("CoreGui"):GetDescendants()) do
-        pcall(function() v:Destroy() end)
-    end
 end)
