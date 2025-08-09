@@ -9,19 +9,19 @@ getgenv().ConfigsKaitun = {
 	Beta_Fix_Data_Sync = true,
 
 	NoDeletePlayer = false,
-  
+
 	["Block Pet Gift"] = false,
 
 	Collect_Cooldown = 120, -- cooldown to collect fruit
-	JustFuckingCollectAll = false, -- Collect all (fruit not wait mutation)
-	
+
 	["Low Cpu"] = true,
-	["Auto Rejoin"] = false,
-	
+	["Auto Rejoin"] = true,
+
 	["Rejoin When Update"] = false,
 	["Limit Tree"] = {
-		["Limit"] = 200,
-		["Destroy Untill"] = 150,
+		["Limit"] = 150,
+		["Destroy Until"] = 120,
+
 		["Safe Tree"] = {
 			"Tranquil Bloom",
 			"Maple Apple",
@@ -33,7 +33,7 @@ getgenv().ConfigsKaitun = {
 			"Moon Mango",
 			"Bone Blossom",
 			"Fossilight",
-      		"Serenity",
+      			"Serenity",
       
 			-- locked fruit for zen event
 			["Tomato"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5,
@@ -92,22 +92,13 @@ getgenv().ConfigsKaitun = {
 	Events = {
 		["Cook Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
-		},
-		["Zen Event"] = {
-			["Restocking"] = { -- Minimumthing to restock
-				Max_Restocks_Price = 3_000_000_000_000,
-				Minimum_Money = 1_000_000,
-				Minimum_Chi = 100
-			},
-			["Doing"] = {
-				Minimum_Money = 1_000_000, -- minimum money to start play this event
-				First_Upgrade_Tree = 7,
-				Maximum_Chi = 100,
-
-				-- // thing to skip doing
-				Skip_Fox = false, -- Skip The Middle Fox Trade (Corrupted Kitsune)
-				Skip_Corrupted_OldMan = false, -- Skip The OldMan Trade (Kodama)
-				-- If u need to skip Tranquill OldMan Set "First Upgrade Tree" To 0 and Max Chi To 99999
+			Rewards_Item = { -- The top is the most top mean prefered.
+				"Gorilla Chef",
+				"Gourmet Egg",
+				"Culinarian Chest",
+				"Gourmet Seed Pack",
+				"Sunny-Side Chicken",
+				-- u can add it more as u want, if it not in list.
 			}
 		},
 		["Traveling Shop"] = {
@@ -130,7 +121,7 @@ getgenv().ConfigsKaitun = {
 			"Koi",
 			"Raiju",
 		},
-		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
+		Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {
@@ -148,13 +139,15 @@ getgenv().ConfigsKaitun = {
 			"Basic Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
+			"Levelup Lollipop",
 			"Medium Toy",
 			"Medium Treat",
-			"Levelup Lollipop",
+			"Grandmaster Sprinkler",
 			"Lightning Rod",
 		},
 		Lock = {
 			"Master Sprinkler",
+			"Grandmaster Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
 			"Basic Sprinkler",
@@ -164,28 +157,35 @@ getgenv().ConfigsKaitun = {
 
 	Eggs = {
 		Place = {
-      		"Gourmet Egg",
+			"Gourmet Egg",
 			"Zen Egg",
-			"Bug Egg",
-			"Paradise Egg",
-			"Common Summer Egg",
-		},
-		Buy = {
+			"Primal Egg",
+			"Dinosaur Egg",
+			"Oasis Egg",
 			"Anti Bee Egg",
-			"Bee Egg",
 			"Night Egg",
 			"Bug Egg",
 			"Paradise Egg",
-			"Mythical Egg",
-			"Rare Egg",
+			"Bee Egg",
 			"Rare Summer Egg",
-			"Common Summer Egg",
+			"Mythical Egg",
+			"Common Egg",
+		},
+		Buy = {
+			"Bee Egg",
+			"Oasis Egg",
+			"Paradise Egg",
+			"Anti Bee Egg",
+			"Night Egg",
+			"Rare Summer Egg",
+			"Bug Egg",
+			"Mythical Egg",
 			"Common Egg",
 		}
 	},
 
 	Pets = {
-		["Start Delete Pet At"] = 50,
+		["Start Delete Pet At"] = 40,
 		["Upgrade Slot"] = {
 			["Pet"] = {
 				["Starfish"] = { 8, 100, 1 },
@@ -209,17 +209,18 @@ getgenv().ConfigsKaitun = {
 				["Toucan"] = 5,
 				["Bunny"] = 5,
 			},
-			["Limit Upgrade"] = 5,
+			["Limit Upgrade"] = 2, -- max is 5 (more than or lower than 1 will do nothing)
 			["Equip When Done"] = {
 				["Spaghetti Sloth"] = { 4, 100, 1 },
 				["Koi"] = { 4, 100, 2 },
 			},
 		},
-		Locked_Pet_Age = 50, -- pet that age > 60 will lock
+		Favorite_LockedPet = true,
+		Locked_Pet_Age = 60, -- pet that age > 60 will lock
 		Locked = {
 			"French Fry Ferret",
-      		"Spaghetti Sloth",
-      		"Sushi Bear",
+      			"Spaghetti Sloth",
+      			"Sushi Bear",
 			"Corrupted Kitsune",
 			"Corrupted Kodama",
 			"Kitsune",
@@ -239,43 +240,36 @@ getgenv().ConfigsKaitun = {
 			"T-Rex",
 			["Capybara"] = 5,
 		},
-		LockPet_Weight = 5, -- if Weight >= 10 they will locked,
-		Instant_Sell = {
-			"Shiba Inu",
-		}
+		LockPet_Weight = 7, -- if Weight >= 10 they will locked
 	},
 
 	Webhook = {
-		UrlPet = "XXX",
-		UrlSeed = "XXX",
-		PcName = "XXX",
+		UrlPet = "xxx",
+		UrlSeed = "xxx",
+		PcName = "xxx",
 
 		Noti = {
 			Seeds = {
-				"Tranquil Bloom",
 				"Sunflower",
 				"Dragon Pepper",
 				"Elephant Ears",
-				"Bone Blossom",
-				"Dragon Sapling",
-				"Maple Apple",
 			},
 			SeedPack = {
 				"Idk"
 			},
 			Pets = {
-				"Spaghetti Sloth",
 				"French Fry Ferret",
 				"Corrupted Kitsune",
-				"Raiju",
-				"Tanchozuru",
 				"Kitsune",
-				"Kappa",
+				"Spinosaurus",
+				"T-Rex",
 				"Disco Bee",
 				"Butterfly",
 				"Mimic Octopus",
+				"Queen Bee",
 				"Fennec Fox",
 				"Dragonfly",
+				"Raccoon",
 				"Red Fox",
 			},
 			Pet_Weight_Noti = true,
