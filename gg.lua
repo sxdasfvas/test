@@ -33,15 +33,7 @@ getgenv().ConfigsKaitun = {
 			"Moon Mango",
 			"Bone Blossom",
 			"Fossilight",
-      			"Serenity",
-      
-			-- locked fruit for zen event
-			["Tomato"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5,
-			["Orange Tulip"] = 5, ["Corn"] = 5, ["Daffodil"] = 5,
-			["Bamboo"] = 5, ["Apple"] = 5, ["Coconut"] = 5,
-			["Pumpkin"] = 5, ["Watermelon"] = 5, ["Cactus"] = 5,
-			["Dragon Fruit"] = 5, ["Mango"] = 5, ["Grape"] = 5,
-			["Mushroom"] = 5, ["Pepper"] = 5, ["Cacao"] = 3
+      		"Serenity",
 		}
 	},
 
@@ -91,7 +83,7 @@ getgenv().ConfigsKaitun = {
 
 	Events = {
 		["Cook Event"] = {
-			Minimum_Money = 1_000_000, -- minimum money to start play this event
+			Minimum_Money = 30_000_000, -- minimum money to start play this event
 			Rewards_Item = { -- The top is the most top mean prefered.
 				"Gorilla Chef",
 				"Gourmet Egg",
@@ -219,8 +211,8 @@ getgenv().ConfigsKaitun = {
 		Locked_Pet_Age = 60, -- pet that age > 60 will lock
 		Locked = {
 			"French Fry Ferret",
-      			"Spaghetti Sloth",
-      			"Sushi Bear",
+      		"Spaghetti Sloth",
+      		"Sushi Bear",
 			"Corrupted Kitsune",
 			"Corrupted Kodama",
 			"Kitsune",
