@@ -12,7 +12,7 @@ getgenv().ConfigsKaitun = {
   
 	["Block Pet Gift"] = false,
 
-	Collect_Cooldown = 60, -- cooldown to collect fruit
+	Collect_Cooldown = 120, -- cooldown to collect fruit
 	JustFuckingCollectAll = false, -- Collect all (fruit not wait mutation)
 	
 	["Low Cpu"] = true,
@@ -130,7 +130,7 @@ getgenv().ConfigsKaitun = {
 			"Koi",
 			"Raiju",
 		},
-		Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
+		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {
@@ -248,7 +248,7 @@ getgenv().ConfigsKaitun = {
 	Webhook = {
 		UrlPet = "XXX",
 		UrlSeed = "XXX",
-		PcName = "LUCKY-AYAYA",
+		PcName = "XXX",
 
 		Noti = {
 			Seeds = {
