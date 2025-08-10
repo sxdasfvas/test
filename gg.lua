@@ -346,9 +346,9 @@ getgenv().ConfigsKaitun = {
 	},
 
 	Webhook = {
-		UrlPet = getgenv().Discord,
-		UrlSeed = getgenv().Discord,
-		PcName = getgenv().PCAYA,
+		UrlPet = "xxx",
+		UrlSeed = "xxx",
+		PcName = "xxx",
 
 		Noti = {
 			Seeds = {
