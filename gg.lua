@@ -10,7 +10,7 @@ getgenv().ConfigsKaitun = {
 
 	NoDeletePlayer = false,
 
-	["Block Pet Gift"] = false,
+	["Block Pet Gift"] = true,
 
 	Collect_Cooldown = 120, -- cooldown to collect fruit
 
@@ -19,46 +19,20 @@ getgenv().ConfigsKaitun = {
 
 	["Rejoin When Update"] = false,
 	["Limit Tree"] = {
-		["Limit"] = 150,
-		["Destroy Until"] = 120,
+		["Limit"] = 200,
+		["Destroy Until"] = 180,
 
 		["Safe Tree"] = {
-			"Tranquil Bloom",
-			"Maple Apple",
-			"Sunflower",
-			"Dragon Pepper",
-			"Elephant Ears",
-			"Moon Melon",
-			"Easter Egg",
-			"Moon Mango",
-			"Bone Blossom",
+			"Moon Blossom",
 			"Fossilight",
-      		"Serenity",
-      
-			-- locked fruit for zen event
-			["Tomato"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5,
-			["Orange Tulip"] = 5, ["Corn"] = 5, ["Daffodil"] = 5,
-			["Bamboo"] = 5, ["Apple"] = 5, ["Coconut"] = 5,
-			["Pumpkin"] = 5, ["Watermelon"] = 5, ["Cactus"] = 5,
-			["Dragon Fruit"] = 5, ["Mango"] = 5, ["Grape"] = 5,
-			["Mushroom"] = 5, ["Pepper"] = 5, ["Cacao"] = 3
 		}
 	},
 
 	Seed = {
 		Buy = {
 			Mode = "Auto", -- Custom , Auto
-			Custom = {
-				"Tomato",
-				"Strawberry",
-				"Bell Pepper",
-				"Blood Banana",
-				"Onion",
-				"Pear",
-				"Grape",
-				"Mushroom",
-				"Pepper",
-				"Cacao",
+			Custom = { -- any fruit u need to place
+				"Carrot",
 			}
 		},
 		Place = {
@@ -67,25 +41,15 @@ getgenv().ConfigsKaitun = {
 				"Carrot"
 			},
 			Lock = {
+				"Maple Apple",
 				"Sunflower",
 				"Dragon Pepper",
 				"Elephant Ears",
 				"Moon Melon",
+				"Easter Egg",
 				"Moon Mango",
+				"Bone Blossom",
 				"Fossilight",
-				"Beanstalk",
-				"Ember Lily",
-				"Sugar Apple",
-				"Burning Bud",
-				"Giant Pinecone",
-				"Elder Strawberry",
-				"Bitter Melon",
-				"King Cabbage",
-				"Grand Tomato",
-				"Tall Asparagus",
-				"Taco Fern",
-				"Sugarglaze",
-
 			}
 		}
 	},
@@ -98,7 +62,7 @@ getgenv().ConfigsKaitun = {
 
 	Events = {
 		["Cook Event"] = {
-			Minimum_Money = 1_000_000, -- minimum money to start play this event
+			Minimum_Money = 10_000_000, -- minimum money to start play this event
 			Rewards_Item = { -- The top is the most top mean prefered.
 				"Gorilla Chef",
 				"Gourmet Egg",
@@ -113,48 +77,34 @@ getgenv().ConfigsKaitun = {
 		},
 		Craft = {
 			"Anti Bee Egg",
-			"Small Toy",
-			"Small Treat",
-			"Ancient Seed Pack",
 		},
 		Shop = {
-      		"Gourmet Egg",
-			"Gourmet Seed Pack",
 			"Zen Egg",
-			"Zenflare",
 			"Zen Seed Pack",
-     		"Pet Shard Corrupted",
+			"Spiked Mango",
 			"Pet Shard Tranquil",
+			"Pet Shard Corrupted",
 			"Koi",
+			"Soft Sunshine",
+			"Sakura Bush",
 			"Raiju",
 		},
-		Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
+		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {
 		Buy = { 
-			"Watering Can",
-			"Trowel",
-			"Recall Wrench",
-			"Magnifying Glass",
-			"Tanning Mirror",
-			"Cleaning Spray",
-			"Favorite Tool",
-			"Harvest Tool",
-			"Friendship Pot",
 			"Master Sprinkler",
-			"Basic Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
-			"Levelup Lollipop",
-			"Medium Toy",
-			"Medium Treat",
-			"Grandmaster Sprinkler",
+			"Basic Sprinkler",
 			"Lightning Rod",
+			"Level Up Lollipop",
+			"Medium Treat",
+			"Medium Toy",
 		},
 		Lock = {
 			"Master Sprinkler",
-			"Grandmaster Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
 			"Basic Sprinkler",
@@ -195,61 +145,52 @@ getgenv().ConfigsKaitun = {
 		["Start Delete Pet At"] = 40,
 		["Upgrade Slot"] = {
 			["Pet"] = {
-				["Starfish"] = { 8, 100, 1 },
-				["Golden Lab"] = 5,
-				["Bee"] = 3,
-				["Bunny"] = 5,
-				["Golden Lab"] = 5,
-				["Pancake Mole"] = 5,
-				["Bagel Bunny"] = 5,
-				["Tanuki"] = 5,
-				["Kodama"] = 10,
-				["Raiju"] = 5,
-				["Maneki-neko"] = 5,
-				["Seagull"] = 5,
-				["Shiba Inu"] = 5,
-				["Nihonzaru"] = 5,
-				["Stegosaurus"] = 5,
-				["Peacock"] = 5,
-				["Triceratops"] = 5,
-				["Pterodactyl"] = 2,
-				["Toucan"] = 5,
-				["Bunny"] = 5,
+				["Starfish"] = { 5, 100, 1, true }, -- the "true" on the last is auto equip (use for like only need to use for upgrade pet)
 			},
 			["Limit Upgrade"] = 2, -- max is 5 (more than or lower than 1 will do nothing)
 			["Equip When Done"] = {
-				["Spaghetti Sloth"] = { 4, 100, 1 },
-				["Koi"] = { 4, 100, 2 },
+				["Tanchozuru"] = { 5, 100, 1 }, -- 5 on the first mean equip only 5 | pet , 100 mean equip only level pet lower than 100 | the one on the last is priority it will ues first if possible 
+				["Ostrich"] = { 3, 100, 2 },
+				["Blood Kiwi"] = { 8, 100 },
+				["Seal"] = { 8, 100 },
+				["Rooster"] = { 8, 100 },
+				["Starfish"] = { 5, 75 },
 			},
 		},
 		Favorite_LockedPet = true,
 		Locked_Pet_Age = 60, -- pet that age > 60 will lock
 		Locked = {
 			"French Fry Ferret",
-			"Lobster Thermidor",
-			"Hotdog Daschund",
-      		"Spaghetti Sloth",
-      		"Sushi Bear",
+			"Spaghetti Sloth",
 			"Corrupted Kitsune",
-			"Corrupted Kodama",
-			"Kitsune",
-			"Kappa",
+			"Raiju",
+			"Koi",
+			"Tanuki",
 			"Tanchozuru",
+			"Kappa",
+			"Kitsune",
+			"Dilophosaurus",
+			"Moon Cat",
+			"Capybara",
+			"Spinosaurus",
+			"Bear Bee",
+			"T-Rex",
+			"Brontosaurus",
 			"Disco Bee",
 			"Butterfly",
 			"Queen Bee",
 			"Dragonfly",
 			"Raccoon",
-			"Red Fox",
+			"Fennec Fox",
 			"Mimic Octopus",
-			"Brontosaurus",
-			"Dilophosaurus",
-			"Ankylosaurus",
-			"Spinosaurus",
-			"T-Rex",
-			["Capybara"] = 5,
+			"Red Fox",
+			"Blood Owl",
+			["Starfish"] = 10,
 		},
 		LockPet_Weight = 7, -- if Weight >= 10 they will locked
+		Instant_Sell = {
+			"NAME oF SOMETHING",
+		}
 	},
 
 	Webhook = {
