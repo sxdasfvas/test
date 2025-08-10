@@ -15,12 +15,12 @@ getgenv().ConfigsKaitun = {
 	Collect_Cooldown = 120, -- cooldown to collect fruit
 
 	["Low Cpu"] = true,
-	["Auto Rejoin"] = false,
+	["Auto Rejoin"] = true,
 
 	["Rejoin When Update"] = false,
 	["Limit Tree"] = {
-		["Limit"] = 200,
-		["Destroy Until"] = 180,
+		["Limit"] = 150,
+		["Destroy Until"] = 120,
 
 		["Safe Tree"] = {
 			"Tranquil Bloom",
@@ -33,9 +33,9 @@ getgenv().ConfigsKaitun = {
 			"Moon Mango",
 			"Bone Blossom",
 			"Fossilight",
-			"Serenity",
-
-					-- locked fruit for zen event
+      		"Serenity",
+      
+			-- locked fruit for zen event
 			["Tomato"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5,
 			["Orange Tulip"] = 5, ["Corn"] = 5, ["Daffodil"] = 5,
 			["Bamboo"] = 5, ["Apple"] = 5, ["Coconut"] = 5,
@@ -98,7 +98,7 @@ getgenv().ConfigsKaitun = {
 
 	Events = {
 		["Cook Event"] = {
-			Minimum_Money = 30_000_000, -- minimum money to start play this event
+			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = { -- The top is the most top mean prefered.
 				"Gorilla Chef",
 				"Gourmet Egg",
@@ -128,7 +128,7 @@ getgenv().ConfigsKaitun = {
 			"Koi",
 			"Raiju",
 		},
-		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
+		Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {
@@ -195,28 +195,39 @@ getgenv().ConfigsKaitun = {
 		["Start Delete Pet At"] = 40,
 		["Upgrade Slot"] = {
 			["Pet"] = {
-				["Starfish"] = { 5, 100, 1, true }, -- the "true" on the last is auto equip (use for like only need to use for upgrade pet)
-				["Nihonzaru"] = { 2, 100, 1, true },
-				["Tanuki"] = { 2, 100, 1, true },
-				["Squirrel"] = { 2, 100, 1, true },
-				["Bagel Bunny"] = { 2, 100, 1, true },
-				["Pancake Mole"] = { 2, 100, 1, true },
-				["Sushi Bear"] = { 2, 100, 1, true },
+				["Starfish"] = { 8, 100, 1 },
+				["Golden Lab"] = 5,
+				["Bee"] = 3,
+				["Bunny"] = 5,
+				["Golden Lab"] = 5,
+				["Pancake Mole"] = 5,
+				["Bagel Bunny"] = 5,
+				["Tanuki"] = 5,
+				["Kodama"] = 10,
+				["Raiju"] = 5,
+				["Maneki-neko"] = 5,
+				["Seagull"] = 5,
+				["Shiba Inu"] = 5,
+				["Nihonzaru"] = 5,
+				["Stegosaurus"] = 5,
+				["Peacock"] = 5,
+				["Triceratops"] = 5,
+				["Pterodactyl"] = 2,
+				["Toucan"] = 5,
+				["Bunny"] = 5,
 			},
 			["Limit Upgrade"] = 2, -- max is 5 (more than or lower than 1 will do nothing)
 			["Equip When Done"] = {
-				["Tanchozuru"] = { 5, 100, 1 }, -- 5 on the first mean equip only 5 | pet , 100 mean equip only level pet lower than 100 | the one on the last is priority it will ues first if possible 
-				["Ostrich"] = { 3, 100, 2 },
-				["Blood Kiwi"] = { 8, 100 },
-				["Seal"] = { 8, 100 },
-				["Rooster"] = { 8, 100 },
-				["Starfish"] = { 5, 75 },
+				["Spaghetti Sloth"] = { 4, 100, 1 },
+				["Koi"] = { 4, 100, 2 },
 			},
 		},
 		Favorite_LockedPet = true,
 		Locked_Pet_Age = 60, -- pet that age > 60 will lock
 		Locked = {
 			"French Fry Ferret",
+			"Lobster Thermidor",
+			"Hotdog Daschund",
       		"Spaghetti Sloth",
       		"Sushi Bear",
 			"Corrupted Kitsune",
