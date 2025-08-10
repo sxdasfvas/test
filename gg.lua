@@ -139,7 +139,6 @@ getgenv().ConfigsKaitun = {
 	},
 
 	Events = {
-		Dino = true,
 		["Cook Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = { -- The top is the most top mean prefered.
