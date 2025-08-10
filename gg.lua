@@ -23,19 +23,46 @@ getgenv().ConfigsKaitun = {
 		["Destroy Untill"] = 200,
 
 		["Safe Tree"] = {
-			"Tranquil Bloom",
-			"Maple Apple",
-			"Moon Mango",
+			["Tomato"] = 1,
+			["Blood Banana"] = 1,
+			["Bamboo"] = 1,
+			["Mango"] = 1,
+			["Pineapple"] = 1,
+			["Beanstalk"] = 1,
+			["Giant Pinecone"] = 1,
+			["Sugar Apple"] = 1,
+			["Pepper"] = 1,
+			["Cacao"] = 1,
+			["Elder Strawberry"] = 1,
+			["Apple"] = 1,
 			"Bone Blossom",
-			"Fossilight",
-      		"Serenity",
-
+			"Grand Tomato",
+			["Ember Lily"] = 1,
+			["Violet Corn"] = 1,
+			["Pumpkin"] = 1,
+			["Moon Melon"] = 1,
+			["Apple"] = 1,
+			["Coconut"] = 1,
+			["Feijoa"] = 1,
+			["Crown Melon"] = 1,
+			["Grape"] = 1,
+			["Dragon Fruit"] = 1,
+			["Cactus"] = 1,
+			["Peach"] = 1,
+			["Corn"] = 1,
+			["Banana"] = 2
+			["Serenity"] = 1,
+			["Moon Mango"] = 1,
+			["Maple Apple"] = 1,
+			["Hive Fruit"] = 1,
+			["Lilac"] = 1,
+			["Soft Sunshine"] = 1,
 		}
 	},
 
 	Seed = {
 		Buy = {
-			Mode = "Custom", -- Custom , Auto
+			Mode = "Auto", -- Custom , Auto
 			Custom = {
 				"Tomato",
 				"Strawberry",
@@ -79,7 +106,7 @@ getgenv().ConfigsKaitun = {
 
 	Events = {
 		["Cook Event"] = {
-			Minimum_Money = 30_000_000, -- minimum money to start play this event
+			Minimum_Money = 10_000_000, -- minimum money to start play this event
 			Rewards_Item = { -- The top is the most top mean prefered.
 				"Gorilla Chef",
 				"Gourmet Egg",
@@ -141,9 +168,6 @@ getgenv().ConfigsKaitun = {
 			"Bug Egg",
 			"Paradise Egg",
 			"Bee Egg",
-			"Rare Summer Egg",
-			"Mythical Egg",
-			"Common Summer Egg",
 		},
 		Buy = {
 			"Bee Egg",
@@ -154,27 +178,22 @@ getgenv().ConfigsKaitun = {
 			"Rare Summer Egg",
 			"Bug Egg",
 			"Mythical Egg",
-			"Common Summer Egg",
-			"Common Egg",
 		}
 	},
 
 	Pets = {
-		["Start Delete Pet At"] = 45,
+		["Start Delete Pet At"] = 40,
 		["Upgrade Slot"] = {
 			["Pet"] = {
 				["Starfish"] = { 5, 100, 1, true }, -- the "true" on the last is auto equip (use for like only need to use for upgrade pet)
 			},
 			["Limit Upgrade"] = 2, -- max is 5 (more than or lower than 1 will do nothing)
 			["Equip When Done"] = {
-				["Tanchozuru"] = { 5, 100, 1 }, -- 5 on the first mean equip only 5 | pet , 100 mean equip only level pet lower than 100 | the one on the last is priority it will ues first if possible 
-				["Ostrich"] = { 3, 100, 2 },
-				["Blood Kiwi"] = { 8, 100 },
-				["Seal"] = { 8, 100 },
-				["Rooster"] = { 8, 100 },
-				["Starfish"] = { 5, 75 },
-				["Spaghetti Sloth"] = { 4, 100 },
-				["Koi"] = { 2, 100 },
+				["Gorilla Chef"] = { 8, 100, 1 },
+				["Sunny-Side Chicken"] = { 8, 100, 3 },
+				["Blood Kiwi"] = { 8, 100, 2 },
+				["Rooster"] = { 8, 100, 4 },
+				["Chicken"] = { 8, 100, 5 },
 			},
 		},
 		Favorite_LockedPet = true,
