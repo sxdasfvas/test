@@ -1,3 +1,10 @@
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() 
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game) 
+    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game) 
+until game:GetService("Players").LocalPlayer:GetAttribute('DataFullyLoaded') == true
+print('this is loadstring for grow a garden')
+
 getgenv().ConfigsKaitun = {
 	Beta_Fix_Data_Sync = true,
 
