@@ -339,9 +339,9 @@ getgenv().ConfigsKaitun = {
 	},
 
 	Webhook = {
-		UrlPet = getgenv().Discord,
-		UrlSeed = getgenv().Discord,
-		PcName = getgenv().PCAYA,
+		UrlPet = "xxx",
+		UrlSeed = "xxx",
+		PcName = "xxx",
 
 		Noti = {
 			Seeds = {
@@ -367,7 +367,7 @@ getgenv().ConfigsKaitun = {
 		}
 	},
 }
-License = getgenv().KeyAYA
+
 loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/98vt13x1h979yxngcvxbkjsq8hsw9rpw.lua"))()
 
 task.spawn(function()
