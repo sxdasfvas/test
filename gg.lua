@@ -5,6 +5,7 @@ repeat task.wait()
 until game:GetService("Players").LocalPlayer:GetAttribute('DataFullyLoaded') == true
 print('this is loadstring for grow a garden')
 
+setfpscap(5)
 getgenv().ConfigsKaitun = {
 	["Block Pet Gift"] = true,
 
