@@ -14,7 +14,7 @@ local function sendDiscordEmbed(title, description)
 	local embed = {{
 		title = title,
 		description = description,
-		color = 0x1abc9c, -- สีเขียวสวย
+		color = 0x1abc9c,
 		timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ"),
 		footer = {
 			text = "Roblox Pet Monitor"
@@ -68,7 +68,7 @@ local function checkAndSend()
 									playerName, petType, weight, level
 								)
 							)
-						elseif (weight > 7 and level <= 10) or (weight > 10 and level <= 39) then
+						elseif (weight > 7 and level <= 1) or (weight > 10 and level <= 39) then
 							sendDiscordEmbed(
 								"🐾 สัตว์เข้าเงื่อนไข",
 								string.format(
