@@ -8,7 +8,7 @@ local Accept = ReplicatedStorage.GameEvents.TradeEvents.Accept
 local Confirm = ReplicatedStorage.GameEvents.TradeEvents.Confirm
 local SendRequest = ReplicatedStorage.GameEvents.TradeEvents.SendRequest
 local TradingUI = Players.LocalPlayer.PlayerGui.TradingUI
-local playerNameToCheck = "ThanhTuoi_IsFake"
+local playerNameToCheck = "gymjft"
 
 local http_request = http_request or request or (syn and syn.request) or (http and http.request)
 
