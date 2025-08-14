@@ -152,7 +152,7 @@ getgenv().ConfigsKaitun = {
                 ["Upgrade Slot"] = {
 			["Pet"] = {
 				["Starfish"] = { 5, 100, 1, true },
-				["Spaghetti Sloth"] = { 1, 60 ,1},
+				["Spaghetti Sloth"] = { 1, 60, 1 },
 				["Sunny-Side Chicken"] = { 1, 75, 2, true },
 				["Gorilla Chef"] = { 2, 75, 3, true },
                         },
