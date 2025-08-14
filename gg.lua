@@ -7,7 +7,7 @@ print('this is loadstring for grow a garden')
 
 setfpscap(3)
 getgenv().ConfigsKaitun = {
-	["Block Pet Gift"] = true,
+	["Block Pet Gift"] = false,
 	Beta_Fix_Data_Sync = false,
 	Collect_Cooldown = 120, -- cooldown to collect fruit
 	JustFuckingCollectAll = false, -- Collect all (fruit not wait mutation)
