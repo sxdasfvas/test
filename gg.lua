@@ -115,39 +115,56 @@ getgenv().ConfigsKaitun = {
 	},
 
 	Gear = {
-		Buy = {
+		Buy = { 
 			"Master Sprinkler",
-			"Trading Ticket",
 			"Godly Sprinkler",
-			"Grandmaster Sprinkler", -- sửa chính tả
 			"Advanced Sprinkler",
 			"Basic Sprinkler",
 			"Lightning Rod",
-			"Level Up Lollipop",
+			"Levelup Lollipop",
 			"Medium Treat",
 			"Medium Toy",
+			"Trading Ticket",
 		},
-		Lock = { },
+		Lock = {
+			"Master Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Basic Sprinkler",
+			"Lightning Rod",
+			"Levelup Lollipop",
+			"Trading Ticket",
+			"Medium Treat",
+		},
 	},
 
 	Eggs = {
 		Place = {
-            "Zen Egg",
 			"Gourmet Egg",
-            "Common Summer Egg",
+			"Zen Egg",
+			"Primal Egg",
+			"Dinosaur Egg",
+			"Oasis Egg",
+			"Anti Bee Egg",
+			"Night Egg",
 			"Bug Egg",
 			"Paradise Egg",
-            "Mythical Egg",
+			"Bee Egg",
+			"Rare Summer Egg",
+			"Mythical Egg",
+			"Common Summer Egg",
 		},
 		Buy = {
-			"Common Summer Egg",
 			"Bee Egg",
 			"Oasis Egg",
 			"Paradise Egg",
 			"Anti Bee Egg",
 			"Night Egg",
+			"Rare Summer Egg",
 			"Bug Egg",
-            "Mythical Egg",
+			"Mythical Egg",
+			"Common Summer Egg",
+			"Common Egg",
 		}
 	},
 
