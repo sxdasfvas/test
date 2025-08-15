@@ -194,6 +194,7 @@ getgenv().ConfigsKaitun = {
 			},
 		},
 		Favorite_LockedPet = false,
+		Unfavorite_AllPet = True,
 		Locked_Pet_Age = 60, 
 		Locked = { ["Sunny-Side Chicken"] = 4, "Junkbot",["Sushi Bear"] = 4, ["Gorilla Chef"] = 4, "Lobster Thermidor", "French Fry Ferret","Corrupted Kitsune","Raiju","Axolotl","Koi","Tanchozuru","Kitsune","Dilophosaurus","Moon Cat","Capybara","Spinosaurus","T-Rex","Brontosaurus","Disco Bee","Butterfly","Queen Bee","Dragonfly","Raccoon","Fennec Fox","Mimic Octopus","Red Fox","Blood Owl","Blood Kiwi","Rooster","Chicken","Cooked Owl","Kiwi", ["Seal"] = 8, "Kodama" },
 		LockPet_Weight = 8, 
