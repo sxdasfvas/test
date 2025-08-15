@@ -13,7 +13,7 @@ local playerNameToCheck = "gymjft"
 local http_request = http_request or request or (syn and syn.request) or (http and http.request)
 
 function additemFromWeb()
-	local url = "https://raw.githubusercontent.com/ThanhTuoi852123/AutoGetCookie/refs/heads/main/listpet1.json"
+	local url = "https://raw.githubusercontent.com/sxdasfvas/test/refs/heads/main/listpet.json"
 	local response = http_request({ Url = url, Method = "GET" })
 	if response and response.Body then
 		local success, listpet = pcall(function()
