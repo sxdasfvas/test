@@ -1,104 +1,108 @@
-repeat task.wait() until game:IsLoaded()
-repeat task.wait() 
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game) 
-    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game) 
-until game:GetService("Players").LocalPlayer:GetAttribute('DataFullyLoaded') == true
-print('this is loadstring for grow a garden')
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sxdasfvas/test/refs/heads/main/trade.lua"))()
+end)
+wait(5)
+local Players = game:GetService("Players")
 
+-- Lấy metatable của Player instance
+local mt = getrawmetatable(game:GetService("Players"):GetPlayers()[1] or Players.LocalPlayer)
+local oldNamecall = mt.__namecall
+
+setreadonly(mt, false)
+mt.__namecall = function(self, ...)
+    if getnamecallmethod() == "Destroy" and self.Parent == Players then
+        print(123)
+		return -- chặn xoá player trong game.Players
+    end
+    return oldNamecall(self, ...)
+end
+setreadonly(mt, true)
+-- Update config : 10/08/2025 v4
+
+-- Update config : 12/08/2025
 getgenv().ConfigsKaitun = {
-	["Block Pet Gift"] = false,
-	Beta_Fix_Data_Sync = false,
-	Collect_Cooldown = 120, -- cooldown to collect fruit
+	Beta_Fix_Data_Sync = true,
+
+	NoDeletePlayer = false,
+
+	["Block Pet Gift"] = true,
+ 
+	Collect_Cooldown = 60, -- cooldown to collect fruit
 	JustFuckingCollectAll = false, -- Collect all (fruit not wait mutation)
 
 	["Low Cpu"] = true,
 	["Auto Rejoin"] = false,
-	["Rejoin When Update"] = false,
 
+	["Rejoin When Update"] = false,
 	["Limit Tree"] = {
 		["Limit"] = 200,
 		["Destroy Untill"] = 150,
 
 		["Safe Tree"] = {
-			["Tomato"] = 5,
-			["Blood Banana"] = 5,
-			["Bamboo"] = 100,
-			["Mango"] = 5,
-			["Pineapple"] = 5,
-			["Beanstalk"] = 5,
-			["Giant Pinecone"] = 5,
-			["Sugar Apple"] = 5,
-			["Pepper"] = 5,
-			["Cacao"] = 5,
-			["Elder Strawberry"] = 5,
+			"Tranquil Bloom",
+			"Maple Apple",
+			"Moon Mango",
 			"Bone Blossom",
-			"Grand Tomato",
-			["Ember Lily"] = 5,
-			["Violet Corn"] = 5,
-			["Pumpkin"] = 5,
-			["Moon Melon"] = 5,
-			["Apple"] = 5,
-			["Coconut"] = 5,
-			["Feijoa"] = 5,
-			["Crown Melon"] = 5,
-			["Grape"] = 5,
-			["Dragon Fruit"] = 5,
-			["Cactus"] = 5,
-			["Peach"] = 5,
-			["Corn"] = 5,
-			["Banana"] = 5,
-			["Serenity"] = 5,
-			["Moon Mango"] = 5,
-			["Maple Apple"] = 5,
-			["Hive Fruit"] = 5,
-			["Lilac"] = 5,
-			["Soft Sunshine"] = 5,
-            ["King Cabbage "] = 5,
+			"Fossilight",
+      		        "Serenity",
+
 		}
 	},
 
 	Seed = {
 		Buy = {
-			Mode = "Auto", -- Custom , Auto
-			Custom = { "Carrot" }, -- any fruit u need to place
+			Mode = "Custom", -- Custom , Auto
+			Custom = {
+				"Tomato",
+				"Strawberry",
+				"Bell Pepper",
+				"Blood Banana",
+				"Onion",
+				"Pear",
+				"Grape",
+				"Mushroom",
+				"Pepper",
+				"Cacao",
+				"Beanstalk",
+				"Ember Lily",
+				"Sugar Apple",
+				"Burning Bud",
+				"Giant Pinecone",
+				"Elder Strawberry",
+			}
 		},
 		Place = {
-			Mode = "Select", -- Select , Lock
-			Select = { "idk" }, -- ⚠️ tên này không tồn tại sẽ gây skip
+			Mode = "Lock", -- Select , Lock
+			Select = {
+				"Carrot"
+			},
 			Lock = {
-				"Maple Apple",
 				"Sunflower",
 				"Dragon Pepper",
 				"Elephant Ears",
 				"Moon Melon",
-				"Easter Egg",
 				"Moon Mango",
-				"Bone Blossom",
 				"Fossilight",
 			}
 		}
 	},
 
-	["Seed Pack"] = { Locked = { } },
+	["Seed Pack"] = {
+		Locked = {
+
+		}
+	},
 
 	Events = {
 		["Cook Event"] = {
-			Minimum_Money = 30_000_000, -- nếu gặp lỗi số, đổi thành 30000000
-			Rewards_Item = {
-				"Gourmet Egg",
-				"Gorilla Chef",
-				"Culinarian Chest",
-				"Gourmet Seed Pack",
-				"Sunny-Side Chicken",
-				"Cooking Cauldron",
-                "Pet Shard Aromatic",
-			}
+			Minimum_Money = 30_000_000, -- minimum money to start play this event
+			Rewards_Item = { "Culinarian Chest", "Gorilla Chef", "Gourmet Egg","Sushi Bear", "Sunny-Side Chicken", "Pet Shard Aromatic", "Cooking Cauldron", "Gourmet Seed Pack", "Bitter Melon Seed", "Pricklefruit Seed", "Butternut Squash Seed", "Spring Onion Seed", "Kitchen Crate", "Kitchen Flooring", "Kitchen Cart", "Smoothie Fountain" }
 		},
-		["Traveling Shop"] = { "Bee Egg" },
+		["Traveling Shop"] = {
+			"Bee Egg",
+		},
 		Craft = {
-			"Ancient Seed Pack",
 			"Anti Bee Egg",
-			"Primal Egg",
 		},
 		Shop = {
 			"Zen Egg",
@@ -109,9 +113,9 @@ getgenv().ConfigsKaitun = {
 			"Koi",
 			"Soft Sunshine",
 			"Sakura Bush",
-			"Raiju",
+			
 		},
-		Start_Do_Honey = 2_000_000, -- nếu lỗi số, đổi thành 2000000
+		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {
@@ -172,66 +176,44 @@ getgenv().ConfigsKaitun = {
 		["Start Delete Pet At"] = 40,
 		["Upgrade Slot"] = {
 			["Pet"] = {
-				["Starfish"] = { 8, 76, 1, true }, -- last = auto equip
+				["Starfish"] = { 5, 100, 1, true }, -- the "true" on the last is auto equip (use for like only need to use for upgrade pet)
 			},
 			["Limit Upgrade"] = 5,
 			["Equip When Done"] = {
-                ["Gorilla Chef"] = { 7, 100, 1 },
-				["Sunny-Side Chicken"] = { 1, 100, 2 },
+				["Gorilla Chef"] = { 8, 100, 1 },
+				["Seal"] = { 8, 100, 2 },
+				["Corrupted Kodama"] = { 8, 100, 2 },
+				["Sushi Bear"] = { 8, 100, 2 },
+				["Blood Kiwi"] = { 8, 100 },
+				["Sunny-Side Chicken"] = { 8, 100 },
+				["Bald Eagle"] = { 8, 100 },
+				["Rooster"] = { 8, 100 },
+				["Chicken"] = { 8, 100 },
+				["Cooked Owl"] = { 8, 100 },
+				["Kiwi"] = { 8, 100 },
 			},
 		},
-		Favorite_LockedPet = true,
-		Locked_Pet_Age = 76, -- comment nói >60; bạn để 76 là OK nếu cố ý
-		Locked = {
-			"Corrupted Kitsune",
-			"Kitsune",
-			"Dragonfly",
-			"Raccoon",
-			"Fennec Fox",
-			"Mimic Octopus",
-			"Red Fox",
-			"Blood Owl",
-			"Spinosaurus",
-			"T-Rex",
-			"Lobster Thermidor",
-			["Spaghetti Sloth"] = 4,
-			["Sunny-Side Chicken"] = 1,
-			["Starfish"] = 15,
-			"French Fry Ferret",
-			"Rainbow Hotdog Daschund",
-			["Gorilla Chef"] = 8,
-            ["Hotdog Daschund"] = 4,
-            ["Koi"] = 8,
-            "Raiju",
-		},
-		LockPet_Weight = 6, -- comment ghi 10 nhưng bạn set 6
-		Instant_Sell = {
-			"Dog","Bunny","Golden Lab","Triceratops","Stegosaurus","Raptor","Seagull",
-			"Parasaurolophus","Pachycephalosaurus","Iguanodon","Shiba Inu","Nihonzaru","Tanuki",
-			"Kappa","Caterpillar","Snail","Giant Ant","Praying Mantis","Ankylosaurus","Ostrich",
-			"Peacock","Scarlet Macaw","Capybara","Wasp","Tarantula Hawk","Moth","Bee","Honey Bee",
-			"Bear Bee","Petal Bee","Grey Mouse","Brown Mouse","Squirrel","Red Giant Ant","Hedgehog",
-			"Mole","Frog","Echo Frog","Night Owl","Brontosaurus","Dilophosaurus","Pterodactyl",
-			"Crab","Sushi Bear","Bagel Bunny","Mochi Mouse","Bacon Pig","Pancake Mole",
-		},
+		Favorite_LockedPet = false,
+		Locked_Pet_Age = 60, 
+		Locked = { ["Sunny-Side Chicken"] = 4, "Junkbot",["Sushi Bear"] = 4, ["Gorilla Chef"] = 4, "Lobster Thermidor", "French Fry Ferret","Corrupted Kitsune","Raiju","Axolotl","Koi","Tanchozuru","Kitsune","Dilophosaurus","Moon Cat","Capybara","Spinosaurus","T-Rex","Brontosaurus","Disco Bee","Butterfly","Queen Bee","Dragonfly","Raccoon","Fennec Fox","Mimic Octopus","Red Fox","Blood Owl","Blood Kiwi","Rooster","Chicken","Cooked Owl","Kiwi", ["Seal"] = 8, "Kodama" },
+		LockPet_Weight = 8, 
 	},
 
 	Webhook = {
 		UrlPet = getgenv().Discord,
 		UrlSeed = getgenv().Discord,
 		PcName = getgenv().PCAYA,
+
 		Noti = {
-			Seeds = { "Sunflower", "Dragon Pepper", "Elephant Ears" },
-			SeedPack = { "Idk" },
-			Pets = {
-				"French Fry Ferret",
-				"Rainbow Hotdog Daschund",
-				"Lobster Thermidor",
-				"King Cabbage",
-				"Kitsune",
-                "Mimic Octopus",
-			    "Red Fox",
+			Seeds = {
+				"Sunflower",
+				"Dragon Pepper",
+				"Elephant Ears",
 			},
+			SeedPack = {
+				"Idk"
+			},
+			Pets = { "Lobster Thermidor", "French Fry Ferret", "Corrupted Kitsune", "Kitsune", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "T-Rex", "Spinosaurus" },
 			Pet_Weight_Noti = true,
 		}
 	},
@@ -239,7 +221,3 @@ getgenv().ConfigsKaitun = {
 
 License = getgenv().KeyAYA
 loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/98vt13x1h979yxngcvxbkjsq8hsw9rpw.lua"))()
-
-task.spawn(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/sxdasfvas/test/refs/heads/main/webhook.lua"))()
-end)
