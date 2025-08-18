@@ -1,8 +1,4 @@
-repeat task.wait() until game:IsLoaded()
-repeat task.wait() 
-until game:GetService("Players").LocalPlayer:GetAttribute('DataFullyLoaded') == true
-print('this is loadstring for grow a garden')
-
+repeat task.wait(10) until game:IsLoaded()
 getgenv().ConfigsKaitun = {
 	["Block Pet Gift"] = true,
 	Beta_Fix_Data_Sync = false,
