@@ -1,4 +1,4 @@
-wait(10000)
+wait(3600)
 
 local PlaceID = game.PlaceId
 local AllIDs = {}
