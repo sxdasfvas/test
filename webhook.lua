@@ -8,7 +8,7 @@ local Httprequest = http_request or request or (syn and syn.request) or (fluxus 
 local PetUtilities = require(ReplicatedStorage.Modules.PetServices.PetUtilities)
 local ReplicationClass = require(ReplicatedStorage.Modules.ReplicationClass)
 local ActivePetsService = ReplicationClass.new("ActivePetsService_Replicator")
-local webhookUrl = "https://discord.com/api/webhooks/1403552223748817059/dTKvd6XBJ6-eod-6_7QLf7kKytxsIf94mlbq44hYfwxiXSTHsNVqoUvLiLcycoSoWiio"
+local webhookUrl = ""
 
 local function sendDiscordEmbed(title, description)
 	local embed = {{
