@@ -1060,7 +1060,7 @@ end
 -- ============ Auto Claim Money ============
 local autoClaimEnabled = false
 local autoClaimThread = nil
-local autoClaimDelay = 0.1 -- seconds between claims
+local autoClaimDelay = 0.3 -- seconds between claims
 
 local function getOwnedPetNames()
     local names = {}
@@ -1143,7 +1143,7 @@ local autoClaimToggle = Tabs.ClaimTab:Toggle({
 local autoClaimDelaySlider = Tabs.ClaimTab:Slider({
     Title = "⏰ Claim Speed",
     Desc = "How fast to collect money (lower = faster)",
-    Default = 1000,
+    Value = 100,
     Min = 0,
     Max = 1000,
     Rounding = 0,
