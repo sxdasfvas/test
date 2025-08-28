@@ -1143,7 +1143,7 @@ local autoClaimToggle = Tabs.ClaimTab:Toggle({
 local autoClaimDelaySlider = Tabs.ClaimTab:Slider({
     Title = "⏰ Claim Speed",
     Desc = "How fast to collect money (lower = faster)",
-    Value = 100,
+    Default = 100,
     Min = 0,
     Max = 1000,
     Rounding = 0,
